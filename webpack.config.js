@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
+require('dotenv').config();
 
 const APP = path.join(__dirname, 'app');
 const BUILD = path.join(__dirname, 'build');
@@ -10,7 +11,7 @@ const PORT = process.env.PORT || 8080;
 
 module.exports = {
   entry: {
-    app: APP
+    app: ['babel-polyfill', APP]
   },
   output: {
     path: BUILD,
@@ -21,8 +22,12 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ['babel?cacheDirectory'],
+        loaders: ['react-hot', 'babel-loader'],
         include: APP
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
       }
     ]
   },
@@ -42,7 +47,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('development')
+        NODE_ENV: JSON.stringify('development'),
+        CLIENT_ID: JSON.stringify(process.env.CLIENT_ID)
       }
     }),
     new webpack.HotModuleReplacementPlugin(),
