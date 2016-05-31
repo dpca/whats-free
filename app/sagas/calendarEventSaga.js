@@ -10,7 +10,7 @@ function fetchNextEvent(calendar) {
     timeMin: (new Date()).toISOString(),
     showDeleted: false,
     singleEvents: true,
-    maxResults: 1,
+    maxResults: 2,
     orderBy: 'startTime'
   });
 };
