@@ -43,7 +43,7 @@ class CalendarItem extends Component {
 
   bookRoom() {
     const { calendarId, calendarName, onBookRoom } = this.props;
-    onBookRoom(calendarId, calendarName, 'Test', moment(), moment().add(1, 'hour'));
+    onBookRoom(calendarId, calendarName, 'Dev testing, please ignore', moment(), moment().add(1, 'hour'));
   }
 
   renderFree() {
@@ -53,7 +53,7 @@ class CalendarItem extends Component {
         Free
         &nbsp;
         &nbsp;
-        <button onClick={this.bookRoom.bind(this)}>
+        <button className="btn btn-xs btn-default" onClick={this.bookRoom.bind(this)}>
           Book room
         </button>
       </div>
