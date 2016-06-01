@@ -41,7 +41,7 @@ export default function* authFlowSaga() {
       yield* handleAuth(authResult);
     }
   } catch (e) {
-    yield put(authFailure(e));
+    yield put(authFailure('Could not authenticate'));
   }
 
   while (true) {

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
+import moment from 'moment';
 import Time from './Time';
 
 class CalendarItem extends Component {
@@ -33,11 +34,30 @@ class CalendarItem extends Component {
           </div>
         )
       } else {
-        return <div>Free</div>
+        return this.renderFree();
       }
     } else {
-      return <div>Free</div>
+      return this.renderFree();
     }
+  }
+
+  bookRoom() {
+    const { calendarId, calendarName, onBookRoom } = this.props;
+    onBookRoom(calendarId, calendarName, 'Test', moment(), moment().add(1, 'hour'));
+  }
+
+  renderFree() {
+    const { calendarId, calendarName } = this.props;
+    return (
+      <div>
+        Free
+        &nbsp;
+        &nbsp;
+        <button onClick={this.bookRoom.bind(this)}>
+          Book room
+        </button>
+      </div>
+    );
   }
 
   capitalizeFirstLetter(string) {

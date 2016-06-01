@@ -21,10 +21,30 @@ export function authFailure(error) {
 };
 
 export const CALENDAR_UPDATED = 'CALENDAR_UPDATED';
-export function calendarUpdated(calendarName, nextEvents) {
+export function calendarUpdated(calendarId, calendarName, nextEvents) {
   return {
     type: CALENDAR_UPDATED,
+    calendarId,
     calendarName,
     nextEvents
+  }
+};
+
+export const BOOK_ROOM = 'BOOK_ROOM';
+export function bookRoom(calendarId, calendarName, summary, start, end) {
+  return {
+    type: BOOK_ROOM,
+    calendarId,
+    calendarName,
+    summary,
+    start,
+    end
+  }
+};
+
+export const ROOM_BOOKED = 'ROOM_BOOKED';
+export function roomBooked() {
+  return {
+    type: ROOM_BOOKED
   }
 };

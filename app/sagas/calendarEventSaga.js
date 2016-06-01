@@ -1,10 +1,10 @@
 import { takeLatest, delay } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { take, race, call, put } from 'redux-saga/effects';
 
-import { AUTH_SUCCESS, calendarUpdated } from '../actions';
+import { AUTH_SUCCESS, ROOM_BOOKED, calendarUpdated } from '../actions';
 import calendars from '../../calendars.json';
 
-function fetchNextEvent(calendar) {
+function fetchEventsForCal(calendar) {
   return gapi.client.calendar.events.list({
     calendarId: calendar,
     timeMin: (new Date()).toISOString(),
@@ -15,16 +15,20 @@ function fetchNextEvent(calendar) {
   });
 };
 
+function* getEvents(calendar) {
+  const response = yield call(fetchEventsForCal, calendar);
+  return yield put(calendarUpdated(calendar, response.result.summary, response.result.items));
+}
+
 function* fetchCalendars() {
   while(true) {
-    const responses = yield _.map(calendars, (calendar) => {
-      return call(fetchNextEvent, calendar);
+    yield _.map(calendars, (calendar) => {
+      return call(getEvents, calendar);
     });
-    yield _.map(responses, (response) => {
-      return put(calendarUpdated(response.result.summary, response.result.items));
+    yield race({
+      roomBooked: take(ROOM_BOOKED),
+      delay: delay(600000)
     });
-    // run every 10 minutes
-    yield delay(600000);
   }
 };
 

@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 
 import CalendarItem from './CalendarItem';
 
-const CalendarList = ({ calendarEvents }) => {
+const CalendarList = ({ calendarEvents, onBookRoom }) => {
   return (
     <div className="container-fluid">
       <div className="list-group">
@@ -13,8 +13,16 @@ const CalendarList = ({ calendarEvents }) => {
           <div className="col-sm-5">Next meeting</div>
         </div>
         {
-          _.map(calendarEvents, (events, calendarName) => {
-            return <CalendarItem key={calendarName} calendarName={calendarName} events={events} />;
+          _.map(calendarEvents, (cal, id) => {
+            return (
+              <CalendarItem
+                key={id}
+                calendarId={id}
+                calendarName={cal.name}
+                events={cal.events}
+                onBookRoom={onBookRoom}
+              />
+            );
           })
         }
       </div>
