@@ -5,8 +5,8 @@ import { AUTH_REQUEST, authSuccess, authFailure } from '../actions';
 function checkAuth(immediate) {
   return gapi.auth.authorize({
     client_id: process.env.CLIENT_ID,
-    scope: 'https://www.googleapis.com/auth/calendar.readonly',
-    immediate: immediate
+    scope: 'https://www.googleapis.com/auth/calendar',
+    immediate
   });
 }
 
@@ -24,6 +24,7 @@ function* handleAuth(authResult) {
 }
 
 export default function* authFlowSaga() {
+  // wait for gapi to load from google
   let gapiLoading = true;
   while (gapiLoading) {
     if (gapi && gapi.auth && gapi.auth.authorize) {
@@ -33,15 +34,20 @@ export default function* authFlowSaga() {
     }
   }
 
-  let authResult = yield call(checkAuth, true);
-  if (authResult) {
-    yield* handleAuth(authResult);
+  // try to authenticate on page load
+  try {
+    let authResult = yield call(checkAuth, true);
+    if (authResult) {
+      yield* handleAuth(authResult);
+    }
+  } catch (e) {
+    yield put(authFailure(e));
   }
 
   while (true) {
     try {
       yield take(AUTH_REQUEST);
-      const authResult = yield call(checkAuth, false);
+      let authResult = yield call(checkAuth, false);
       if (authResult) {
         yield* handleAuth(authResult);
       }

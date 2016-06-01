@@ -8,7 +8,7 @@ const Auth = ({ onClick, error }) => {
       <button onClick={onClick}>
         Authenticate
       </button>
-      { error ? <span>{error}</span> : null }
+      { error ? <div className="alert">{error}</div> : null }
     </div>
   );
 };

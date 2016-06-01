@@ -23,7 +23,8 @@ function* fetchCalendars() {
     yield _.map(responses, (response) => {
       return put(calendarUpdated(response.result.summary, response.result.items));
     });
-    yield delay(10000);
+    // run every 10 minutes
+    yield delay(600000);
   }
 };
 

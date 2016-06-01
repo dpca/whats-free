@@ -5,27 +5,21 @@ import CalendarItem from './CalendarItem';
 
 const CalendarList = ({ calendarEvents }) => {
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          <td>Room</td>
-          <td>Next meeting</td>
-          <td>Description</td>
-        </tr>
-      </thead>
-      <tbody>
+    <div className="container-fluid">
+      <div className="list-group">
+        <div className="list-group-item row hidden-xs">
+          <div className="col-sm-2">Room</div>
+          <div className="col-sm-5">Status</div>
+          <div className="col-sm-5">Next meeting</div>
+        </div>
         {
           _.map(calendarEvents, (events, calendarName) => {
-            if (events.length > 0) {
-              return <CalendarItem key={calendarName} calendarName={calendarName} events={events} />
-            } else {
-              return null
-            }
+            return <CalendarItem key={calendarName} calendarName={calendarName} events={events} />;
           })
         }
-      </tbody>
-    </table>
-  );
+      </div>
+    </div>
+  )
 }
 
 export default CalendarList;

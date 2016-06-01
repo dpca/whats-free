@@ -1,27 +1,91 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
-import moment from 'moment';
+import Time from './Time';
 
 class CalendarItem extends Component {
-  meetingDistance(event) {
-    return new Date(event.start.dateTime) - new Date()
+  meetingDisplay(event) {
+    if (event) {
+      return (
+        `${this.summaryDisplay(event)} ${this.attendeeDisplay(event)}`
+      )
+    } else {
+      return null
+    }
   }
 
-  meetingTimeDisplay(event) {
-    if (this.meetingDistance(event) < 0) {
-      return `occupied, ending ${moment(event.end.dateTime).fromNow()}`
+  summaryDisplay(event) {
+    if (event.summary) {
+      return this.capitalizeFirstLetter(event.summary);
     } else {
-      return moment(event.start.dateTime).fromNow()
+      return 'Untitled meeting';
+    }
+  }
+
+  currentStatus(event) {
+    if (event) {
+      const eventStart = new Date(event.start.dateTime);
+      const eventEnd = new Date(event.end.dateTime);
+      const now = new Date();
+      if (eventStart < now && now < eventEnd) {
+        return (
+          <div>
+            {this.meetingDisplay(event)}, ending <Time time={eventEnd} />
+          </div>
+        )
+      } else {
+        return <div>Free</div>
+      }
+    } else {
+      return <div>Free</div>
+    }
+  }
+
+  capitalizeFirstLetter(string) {
+    if (string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    } else {
+      return string
+    }
+  }
+
+  nextStatus(event, nextEvent) {
+    if (event) {
+      const eventStart = new Date(event.start.dateTime);
+      const eventEnd = new Date(event.end.dateTime);
+      const now = new Date();
+      if (eventStart > now) {
+        return (
+          <div>
+            {this.meetingDisplay(event)}, <Time time={eventStart} />
+          </div>
+        )
+      } else if (nextEvent) {
+        return (
+          <div>
+            {this.meetingDisplay(nextEvent)}, <Time time={nextEvent.start.dateTime} />
+          </div>
+        )
+      } else {
+        return null
+      }
+    } else {
+      return null
     }
   }
 
   rowClass(event) {
-    if (this.meetingDistance(event) < 0) {
-      return 'danger';
-    } else if (this.meetingDistance(event) < 3600000) {
-      return 'warning';
+    if (event) {
+      const eventStart = new Date(event.start.dateTime);
+      const now = new Date();
+      if (eventStart < now) {
+        return 'list-group-item-danger';
+      } else if (eventStart - now < 3600000) {
+        return 'list-group-item-warning';
+      } else {
+        return 'list-group-item-success';
+      }
     } else {
-      return 'success';
+      return 'list-group-item-success';
     }
   }
 
@@ -38,7 +102,7 @@ class CalendarItem extends Component {
   attendeeDisplay(event) {
     const realAttendees = this.attendees(event);
     if (realAttendees.length > 2) {
-      return `(${this.attendeeName(realAttendees[0])} and ${realAttendees[0].length} others)`;
+      return `(${this.attendeeName(realAttendees[0])} and ${realAttendees.length - 1} others)`;
     } else if (realAttendees.length === 2) {
       return `(${this.attendeeName(realAttendees[0])} and 1 other)`;
     } else if (realAttendees.length === 1) {
@@ -48,27 +112,29 @@ class CalendarItem extends Component {
     }
   }
 
-  maybeDisplayNext(thisEvent, nextEvent) {
-    if (this.meetingDistance(thisEvent) < 0) {
-      return <div>next meeting {this.meetingTimeDisplay(nextEvent)}</div>
-    } else {
-      return null
-    }
-  }
-
   render() {
     const { calendarName, events } = this.props;
     const [closestEvent, nextEvent, ...rest] = events;
+    const padded = { paddingTop: 5, paddingBottom: 5 };
 
     return (
-      <tr key={calendarName} className={this.rowClass(closestEvent)}>
-        <td>{calendarName}</td>
-        <td>
-          <div>{this.meetingTimeDisplay(closestEvent)}</div>
-          { this.maybeDisplayNext(closestEvent, nextEvent) }
-        </td>
-        <td>{closestEvent.summary} {this.attendeeDisplay(closestEvent)}</td>
-      </tr>
+      <div className={`list-group-item row ${this.rowClass(closestEvent)}`}>
+        <div className="col-sm-2">
+          <div style={padded}>
+            {calendarName}
+          </div>
+        </div>
+        <div className="col-sm-5">
+          <div style={padded}>
+            {this.currentStatus(closestEvent)}
+          </div>
+        </div>
+        <div className="col-sm-5">
+          <div style={padded}>
+            {this.nextStatus(closestEvent, nextEvent)}
+          </div>
+        </div>
+      </div>
     )
   }
 }
