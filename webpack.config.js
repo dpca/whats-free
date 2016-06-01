@@ -13,11 +13,13 @@ module.exports = {
   entry: {
     app: ['babel-polyfill', APP]
   },
+
   output: {
     path: BUILD,
     filename: 'bundle.js',
     publicPath: '/'
   },
+
   module: {
     loaders: [
       {
@@ -31,7 +33,9 @@ module.exports = {
       }
     ]
   },
+
   devtool: 'eval-source-map',
+
   devServer: {
     historyApiFallback: true,
     hot: true,
@@ -44,6 +48,7 @@ module.exports = {
     host: HOST,
     port: PORT
   },
+
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -51,7 +56,9 @@ module.exports = {
         CLIENT_ID: JSON.stringify(process.env.CLIENT_ID)
       }
     }),
+
     new webpack.HotModuleReplacementPlugin(),
+
     new CopyWebpackPlugin([
       { from: PUBLIC, to: BUILD }
     ], { ignore: ['.DS_Store'] })
