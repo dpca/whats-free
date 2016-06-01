@@ -8,10 +8,6 @@ const APP = path.join(__dirname, 'app');
 const BUILD = path.join(__dirname, 'build');
 const PUBLIC = path.join(__dirname, 'app/public');
 
-const PACKAGE = Object.keys(
-  require('./package.json').dependencies
-);
-
 module.exports = {
   entry: {
     app: ['babel-polyfill', APP],
