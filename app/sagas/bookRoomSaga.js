@@ -1,4 +1,4 @@
-import { takeEvery } from 'redux-saga';
+import { takeEvery, delay } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { BOOK_ROOM, roomBooked } from '../actions';
 
@@ -10,29 +10,27 @@ function callGoogle(action) {
       location: action.calendarName,
       start: {
         dateTime: (new Date(action.start)).toISOString(),
-        timeZone: 'America/New_York'
+        timeZone: 'America/New_York',
       },
       end: {
         dateTime: (new Date(action.end)).toISOString(),
-        timeZone: 'America/New_York'
+        timeZone: 'America/New_York',
       },
-      attendees: [
-        { email: action.calendarId }
-      ]
-    }
+      attendees: [ { email: action.calendarId } ]
+    },
   });
 }
 
 function* bookRoom(action) {
   try {
-    const response = yield call(callGoogle, action);
+    yield call(callGoogle, action);
     yield delay(1000);
-    yield put(roomBooked());
+    yield put(roomBooked(action.calendarId));
   } catch (e) {
-
+    console.log(e)
   }
-};
+}
 
 export default function* bookRoomSaga() {
   yield* takeEvery(BOOK_ROOM, bookRoom);
-};
+}

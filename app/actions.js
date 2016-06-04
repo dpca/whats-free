@@ -43,8 +43,9 @@ export function bookRoom(calendarId, calendarName, summary, start, end) {
 };
 
 export const ROOM_BOOKED = 'ROOM_BOOKED';
-export function roomBooked() {
+export function roomBooked(calendarId) {
   return {
-    type: ROOM_BOOKED
+    type: ROOM_BOOKED,
+    calendarId
   }
 };
