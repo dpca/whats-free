@@ -32,11 +32,11 @@ class CurrentMeeting extends Component {
   }
 
   render() {
-    const { event } = this.props;
+    const { event, loading } = this.props;
     if (event) {
-      return (
-        <MeetingDisplay event={event} />
-      );
+      return <MeetingDisplay event={event} />;
+    } else if (loading) {
+      return <div>Loading...</div>;
     }
     return this.renderFree();
   }
@@ -49,6 +49,7 @@ CurrentMeeting.propTypes = {
   }),
   calendarId: PropTypes.string.isRequired,
   calendarName: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   onBookRoom: PropTypes.func.isRequired,
 };
 

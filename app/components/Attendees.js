@@ -11,7 +11,7 @@ class Attendees extends Component {
     const realAttendees = _.filter(event.attendees, (attendee) =>
       attendee.resource !== true && attendee.responseStatus !== 'declined');
     if (realAttendees.length > 2) {
-      return <span>({this.attendeeName(realAttendees[0])} and ${realAttendees.length - 1} others)</span>;
+      return <span>({this.attendeeName(realAttendees[0])} and {realAttendees.length - 1} others)</span>;
     } else if (realAttendees.length === 2) {
       return <span>({this.attendeeName(realAttendees[0])} and 1 other)</span>;
     } else if (realAttendees.length === 1) {

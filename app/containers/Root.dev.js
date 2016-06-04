@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 import App from './App';
 import DevTools from './DevTools';
 
-const Root = ({ store }) => {
+const Root = ({ store, history }) => {
   return (
     <Provider store={store}>
       <div>
-        <App />
+        <App history={history} />
         <DevTools />
       </div>
     </Provider>

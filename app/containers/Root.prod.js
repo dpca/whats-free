@@ -5,10 +5,10 @@ import App from './App';
 
 export default class Root extends Component {
   render() {
-    const { store } = this.props;
+    const { store, history } = this.props;
     return (
       <Provider store={store}>
-        <App />
+        <App history={history} />
       </Provider>
     );
   }

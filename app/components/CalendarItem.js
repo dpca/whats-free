@@ -16,7 +16,7 @@ class CalendarItem extends Component {
   }
 
   rowClass() {
-    const event = this.props.events[0];
+    const event = this.props.calendar.events[0];
     if (event) {
       const eventStart = new Date(event.start.dateTime);
       const now = new Date();
@@ -34,7 +34,7 @@ class CalendarItem extends Component {
   }
 
   currentMeeting() {
-    const event = this.props.events[0];
+    const event = this.props.calendar.events[0];
     if (event) {
       const eventStart = new Date(event.start.dateTime);
       const eventEnd = new Date(event.end.dateTime);
@@ -47,29 +47,30 @@ class CalendarItem extends Component {
   }
 
   nextMeeting() {
-    return _.find(this.props.events, (event) =>
+    return _.find(this.props.calendar.events, (event) =>
       new Date(event.start.dateTime) > new Date()
     );
   }
 
   render() {
-    const { calendarId, calendarName, events, onBookRoom } = this.props;
+    const { calendar, onBookRoom } = this.props;
     const padded = { paddingTop: 5, paddingBottom: 5 };
 
     return (
       <div className={`list-group-item row ${this.rowClass()}`}>
         <div className="col-sm-2">
           <div style={padded}>
-            {calendarName}
+            {calendar.name}
           </div>
         </div>
         <div className="col-sm-5">
           <div style={padded}>
             <CurrentMeeting
-              calendarId={calendarId}
-              calendarName={calendarName}
+              calendarId={calendar.id}
+              calendarName={calendar.name}
               event={this.currentMeeting()}
               onBookRoom={onBookRoom}
+              loading={calendar.loading}
             />
           </div>
         </div>
@@ -81,6 +82,17 @@ class CalendarItem extends Component {
       </div>
     )
   }
+}
+
+CalendarItem.propTypes = {
+  calendar: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    events: PropTypes.arrayOf(React.PropTypes.shape({
+      start: PropTypes.shape({ dateTime: PropTypes.string.isRequired }),
+      end: PropTypes.shape({ dateTime: PropTypes.string.isRequired }),
+    })),
+  }).isRequired
 }
 
 export default CalendarItem;

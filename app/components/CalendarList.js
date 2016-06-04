@@ -15,13 +15,7 @@ const CalendarList = ({ calendarEvents, onBookRoom }) => {
         {
           _.map(calendarEvents, (cal, id) => {
             return (
-              <CalendarItem
-                key={id}
-                calendarId={id}
-                calendarName={cal.name}
-                events={cal.events}
-                onBookRoom={onBookRoom}
-              />
+              <CalendarItem key={id} calendar={cal} onBookRoom={onBookRoom} />
             );
           })
         }

@@ -1,24 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Router, Route } from 'react-router';
 
 import { authRequest, bookRoom } from '../actions';
 import Authenticate from '../components/Authenticate';
 import CalendarList from '../components/CalendarList';
 
-import calendars from '../../calendars.json';
-
-class App extends Component {
-  render() {
-    const { calendarEvents, auth, onBookRoom, onAuthorizeClick } = this.props;
-    if (this.props.auth.success) {
-      return (
-        <CalendarList calendarEvents={calendarEvents} onBookRoom={onBookRoom}/>
-      );
-    } else {
-      return (
-        <Authenticate onClick={onAuthorizeClick} error={auth.error} />
-      );
-    }
+const App = ({ calendarEvents, auth, onBookRoom, onAuthorizeClick }) => {
+  if (auth.success) {
+    return (
+      <CalendarList calendarEvents={calendarEvents} onBookRoom={onBookRoom}/>
+    );
+  } else {
+    return (
+      <Authenticate onClick={onAuthorizeClick} error={auth.error} />
+    );
   }
 }
 
@@ -40,7 +36,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default ({ history }) => {
+  return (
+    <Router history={history}>
+      <Route path="/" component={connect(mapStateToProps, mapDispatchToProps)(App)} />
+    </Router>
+  );
+};

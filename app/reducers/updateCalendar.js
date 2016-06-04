@@ -3,7 +3,9 @@ import { CALENDAR_UPDATED } from '../actions';
 import calendars from '../../calendars.json';
 
 const initialState = _.reduce(calendars, (obj, calendar) => {
-  return _.assign({}, obj, { [calendar.id]: { name: calendar.name, events: [] } });
+  return _.assign({}, obj, {
+    [calendar.id]: { id: calendar.id, name: calendar.name, events: [], loading: true }
+  });
 }, {});
 
 console.log(initialState);
@@ -14,8 +16,10 @@ export default function updateCalendar(state = initialState, action) {
       return {
         ...state,
         [action.calendarId]: {
+          id: action.calendarId,
           name: action.calendarName,
           events: action.nextEvents,
+          loading: false,
         }
       }
     default:
