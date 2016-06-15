@@ -22,11 +22,6 @@ class CurrentMeeting extends Component {
     return (
       <div>
         Free
-        &nbsp;
-        &nbsp;
-        <button className="btn btn-xs btn-default" onClick={this.bookRoom}>
-          Book room
-        </button>
       </div>
     );
   }
