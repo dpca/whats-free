@@ -16,6 +16,7 @@ export default function updateCalendar(state = initialState, action) {
       return {
         ...state,
         [action.calendarId]: {
+          ...state.calendarId,
           id: action.calendarId,
           name: action.calendarName,
           events: action.nextEvents,
