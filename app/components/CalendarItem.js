@@ -10,7 +10,7 @@ class CalendarItem extends Component {
   nextStatus() {
     const nextMeeting = this.nextMeeting();
     if (nextMeeting) {
-      return <MeetingDisplay event={nextMeeting} />
+      return <MeetingDisplay event={nextMeeting} isFuture={true} />
     }
     return null;
   }

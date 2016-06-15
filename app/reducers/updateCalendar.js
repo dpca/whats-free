@@ -8,8 +8,6 @@ const initialState = _.reduce(calendars, (obj, calendar) => {
   });
 }, {});
 
-console.log(initialState);
-
 export default function updateCalendar(state = initialState, action) {
   switch (action.type) {
     case CALENDAR_UPDATED:

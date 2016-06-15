@@ -18,20 +18,28 @@ class MeetingDisplay extends Component {
     return 'Untitled meeting';
   }
 
+  renderTime(event, isFuture) {
+    if (isFuture) {
+      return <span>starting <Time time={new Date(event.start.dateTime)} /></span>;
+    }
+    return <span>ending <Time time={new Date(event.end.dateTime)} /></span>;
+  }
+
   render() {
-    const { event } = this.props;
+    const { event, isFuture } = this.props;
     return (
       <div>
         {this.summaryDisplay(event)}
-        <Attendees event={event} />
-        , ending <Time time={new Date(event.end.dateTime) } />
+        <Attendees event={event} />,&nbsp;
+        {this.renderTime(event, isFuture)}
       </div>
     );
   }
 }
 
 MeetingDisplay.propTypes = {
-  event: PropTypes.object.isRequired
+  event: PropTypes.object.isRequired,
+  isFuture: PropTypes.bool
 };
 
 export default MeetingDisplay;
