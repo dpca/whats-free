@@ -1,3 +1,7 @@
+[![Code Climate](https://codeclimate.com/github/dpca/whats-free/badges/gpa.svg)](https://codeclimate.com/github/dpca/whats-free)
+
+* * *
+
 # whats-free
 
 Simple page to show free rooms from your Google Apps account
