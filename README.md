@@ -9,7 +9,9 @@ Simple page to show free rooms from your Google Apps account
 ## Development
 
 ```
-npm run start
+yarn install
+yarn build
+yarn start
 ```
 
 ## Google API configuration
@@ -19,10 +21,16 @@ Calendar API. Create OAuth 2.0 credentials and copy the Client ID to an entry
 in a `.env` file in the top-level directory. Authorize javascript origins for
 whatever domain/IP you want to run on.
 
+## Calendar configuration
+
+You must create a calendar.json file in the top level directory with
+information about the calendars you wish to watch. It should contain a list of
+calendar objects, each having an `id` and `name` field.
+
 ## Deploy
 
 ```
-npm run build
+yarn build
 scp build/* SERVER
 ```
 
