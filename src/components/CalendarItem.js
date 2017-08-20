@@ -1,11 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
+// @flow
 
+import React, { Component } from 'react';
+import _ from 'lodash';
 import CurrentMeeting from './CurrentMeeting';
 import MeetingDisplay from './MeetingDisplay';
+import type { Calendar } from '../types';
 
-class CalendarItem extends Component {
+type Props = {
+  calendar: Calendar,
+  onBookRoom: Function,
+};
+
+class CalendarItem extends Component<Props> {
   nextStatus() {
     const nextMeeting = this.nextMeeting();
     if (nextMeeting) {
@@ -81,17 +87,5 @@ class CalendarItem extends Component {
     );
   }
 }
-
-CalendarItem.propTypes = {
-  calendar: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    events: PropTypes.arrayOf(PropTypes.shape({
-      start: PropTypes.shape({ dateTime: PropTypes.string.isRequired }),
-      end: PropTypes.shape({ dateTime: PropTypes.string.isRequired }),
-    })),
-  }).isRequired,
-  onBookRoom: PropTypes.func.isRequired,
-};
 
 export default CalendarItem;

@@ -1,7 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
 
-function Auth({ onClick, error }) {
+import React from 'react';
+
+type Props = {
+  onClick: Function,
+  error?: string,
+};
+
+function Auth({ onClick, error }: Props) {
   return (
     <div>
       { error ? <div className="alert alert-warning">{error}</div> : null }
@@ -13,15 +19,5 @@ function Auth({ onClick, error }) {
     </div>
   );
 }
-
-Auth.propTypes = PropTypes.oneOfType([
-  PropTypes.shape({
-    onClick: PropTypes.func.isRequired,
-    error: PropTypes.string,
-  }),
-  PropTypes.shape({
-    onClick: PropTypes.func.isRequired,
-  }),
-]);
 
 export default Auth;

@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
 
+import React from 'react';
 import Attendees from './Attendees';
 import Time from './Time';
+import type { CalendarEvent } from '../types';
+
+type Props = {
+  event: CalendarEvent,
+  isFuture?: boolean,
+};
 
 function capitalizeFirstLetter(string) {
   if (string) {
@@ -25,7 +31,7 @@ function renderTime(event, isFuture) {
   return <span>ending <Time time={new Date(event.end.dateTime)} /></span>;
 }
 
-function MeetingDisplay({ event, isFuture }) {
+function MeetingDisplay({ event, isFuture }: Props) {
   return (
     <div>
       {summaryDisplay(event)}
@@ -34,10 +40,5 @@ function MeetingDisplay({ event, isFuture }) {
     </div>
   );
 }
-
-MeetingDisplay.propTypes = {
-  event: PropTypes.object.isRequired,
-  isFuture: PropTypes.bool,
-};
 
 export default MeetingDisplay;

@@ -1,10 +1,20 @@
+// @flow
+
 import React, { Component } from 'react';
 import moment from 'moment';
 
-class Time extends Component {
-  constructor(props) {
+type Props = {
+  time: Date,
+};
+
+type State = {
+  timeDisplay: string,
+};
+
+class Time extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
-    this.state = { timeDisplay: moment(this.props.time).fromNow() };
+    this.state = { timeDisplay: moment(props.time).fromNow() };
   }
 
   componentDidMount() {
@@ -13,15 +23,19 @@ class Time extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
+
+  interval: ?number;
 
   tick = () => {
     this.setState({ timeDisplay: moment(this.props.time).fromNow() });
   }
 
   render() {
-    return <span>{this.state.timeDisplay.toString()}</span>;
+    return <span>{this.state.timeDisplay}</span>;
   }
 }
 

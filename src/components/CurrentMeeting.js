@@ -1,8 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
+// @flow
 
+import React from 'react';
 import MeetingDisplay from './MeetingDisplay';
+import type { CalendarEvent } from '../types';
+
+type Props = {
+  event: ?CalendarEvent,
+  loading: boolean,
+  // the following are needed to enable room booking, which is disabled for now
+  calendarId: string,
+  calendarName: string,
+  onBookRoom: Function,
+};
 
 const Free = (
   <div>
@@ -10,43 +19,23 @@ const Free = (
   </div>
 );
 
-class CurrentMeeting extends Component {
-  constructor() {
-    super();
-    this.bookRoom = this.bookRoom.bind(this);
-  }
+// function bookRoom({ calendarId, calendarName, onBookRoom }) {
+//   onBookRoom(
+//     calendarId,
+//     calendarName,
+//     'Dev testing, please ignore',
+//     moment(),
+//     moment().add(1, 'hour'),
+//   );
+// }
 
-  bookRoom() {
-    const { calendarId, calendarName, onBookRoom } = this.props;
-    onBookRoom(
-      calendarId,
-      calendarName,
-      'Dev testing, please ignore',
-      moment(),
-      moment().add(1, 'hour'),
-    );
+function CurrentMeeting({ event, loading }: Props) {
+  if (event) {
+    return <MeetingDisplay event={event} />;
+  } else if (loading) {
+    return <div>Loading...</div>;
   }
-
-  render() {
-    const { event, loading } = this.props;
-    if (event) {
-      return <MeetingDisplay event={event} />;
-    } else if (loading) {
-      return <div>Loading...</div>;
-    }
-    return Free;
-  }
+  return Free;
 }
-
-CurrentMeeting.propTypes = {
-  event: PropTypes.shape({
-    start: PropTypes.shape({ dateTime: PropTypes.string.isRequired }).isRequired,
-    end: PropTypes.shape({ dateTime: PropTypes.string.isRequired }).isRequired,
-  }),
-  calendarId: PropTypes.string.isRequired,
-  calendarName: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired,
-  onBookRoom: PropTypes.func.isRequired,
-};
 
 export default CurrentMeeting;

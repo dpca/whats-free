@@ -1,14 +1,22 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
+import type { CalendarEvent } from '../types';
+
+type Props = {
+  event: CalendarEvent,
+};
 
 function attendeeName(attendee) {
   return attendee.displayName || attendee.email;
 }
 
-function Attendees({ event }) {
-  const realAttendees = _.filter(event.attendees, (attendee) =>
-    attendee.resource !== true && attendee.responseStatus !== 'declined');
+function Attendees({ event }: Props) {
+  const realAttendees = _.reject(
+    event.attendees,
+    (attendee) => attendee.resource === true || attendee.responseStatus === 'declined',
+  );
   if (realAttendees.length > 2) {
     return (
       <span>
@@ -22,11 +30,5 @@ function Attendees({ event }) {
   }
   return null;
 }
-
-Attendees.propTypes = {
-  event: PropTypes.shape({
-    attendees: PropTypes.array.isRequired,
-  }).isRequired,
-};
 
 export default Attendees;

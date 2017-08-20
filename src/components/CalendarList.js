@@ -1,9 +1,16 @@
+// @flow
+
 import _ from 'lodash';
 import React from 'react';
-
 import CalendarItem from './CalendarItem';
+import type { Calendar } from '../types';
 
-function CalendarList({ calendarEvents, onBookRoom }) {
+type Props = {
+  calendarEvents: Calendar[],
+  onBookRoom: Function,
+};
+
+function CalendarList({ calendarEvents, onBookRoom }: Props) {
   return (
     <div className="container-fluid">
       <div className="list-group">
