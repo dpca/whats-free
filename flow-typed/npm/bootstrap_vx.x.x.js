@@ -1,4 +1,4 @@
-// flow-typed signature: 13eb435488b3601c824926cc15ed1487
+// flow-typed signature: 85b30c083259ebf329224fa6d303376e
 // flow-typed version: <<STUB>>/bootstrap_v3/flow_v0.53.1
 
 /**
@@ -51,10 +51,6 @@ declare module 'bootstrap/grunt/bs-raw-files-generator' {
 }
 
 declare module 'bootstrap/grunt/change-version' {
-  declare module.exports: any;
-}
-
-declare module 'bootstrap/Gruntfile' {
   declare module.exports: any;
 }
 
@@ -130,9 +126,6 @@ declare module 'bootstrap/grunt/bs-raw-files-generator.js' {
 }
 declare module 'bootstrap/grunt/change-version.js' {
   declare module.exports: $Exports<'bootstrap/grunt/change-version'>;
-}
-declare module 'bootstrap/Gruntfile.js' {
-  declare module.exports: $Exports<'bootstrap/Gruntfile'>;
 }
 declare module 'bootstrap/js/affix.js' {
   declare module.exports: $Exports<'bootstrap/js/affix'>;
