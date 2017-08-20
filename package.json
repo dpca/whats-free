@@ -9,17 +9,17 @@
   "dependencies": {
     "bootstrap": "3",
     "lodash": "^4.13.1",
-    "moment": "^2.13.0",
+    "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-redux": "^4.4.5",
+    "react-redux": "^5.0.6",
     "react-scripts": "1.0.11",
-    "redux": "^3.5.2",
-    "redux-saga": "^0.10.4"
+    "redux": "^3.7.2",
+    "redux-saga": "^0.15.6"
   },
   "devDependencies": {
-    "dotenv": "^2.0.0"
+    "dotenv": "^4.0.0"
   },
   "homepage": "https://github.com/dpca/whats-free#readme",
   "license": "MIT",

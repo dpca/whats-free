@@ -1,5 +1,5 @@
-import { takeEvery, delay } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { BOOK_ROOM, roomBooked } from '../actions';
 
 const gapi = window.gapi;

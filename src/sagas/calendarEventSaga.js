@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { takeLatest, delay } from 'redux-saga';
-import { take, race, call, put } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { take, race, call, put, takeLatest, all } from 'redux-saga/effects';
 
 import { AUTH_SUCCESS, ROOM_BOOKED, calendarUpdated } from '../actions';
 import calendars from '../calendars.json';
@@ -54,9 +54,9 @@ function* watchCalendar(calendar) {
 }
 
 function* fetchCalendars() {
-  yield _.map(calendars, (calendar) => call(watchCalendar, calendar));
+  yield all(_.map(calendars, (calendar) => call(watchCalendar, calendar)));
 }
 
 export default function* calendarEventSaga() {
-  yield* takeLatest(AUTH_SUCCESS, fetchCalendars);
+  yield takeLatest(AUTH_SUCCESS, fetchCalendars);
 }
