@@ -9,23 +9,22 @@ Simple page to show free rooms from your Google Apps account
 ## Development
 
 ```
-yarn install
-yarn build
 yarn start
 ```
 
 ## Google API configuration
 
-Go to console.developers.google.com, create a project, and enable the Google
-Calendar API. Create OAuth 2.0 credentials and copy the Client ID to an entry
-in a `.env` file in the top-level directory. Authorize javascript origins for
-whatever domain/IP you want to run on.
+Go to [console.developers.google.com](console.developers.google.com), create a
+project, and enable the Google Calendar API. Create OAuth 2.0 credentials and
+copy the Client ID to an entry in a `.env` file called
+`REACT_APP_GOOGLE_CLIENT_ID` in the top-level directory. Authorize javascript
+origins for whatever domain/IP you want to run on.
 
 ## Calendar configuration
 
-You must create a calendar.json file in the top level directory with
-information about the calendars you wish to watch. It should contain a list of
-calendar objects, each having an `id` and `name` field.
+Create a calendar.json file in the `src` directory with information about the
+calendars you wish to watch. It should contain a list of calendar objects, each
+having an `id` and `name` field.
 
 ## Deploy
 
