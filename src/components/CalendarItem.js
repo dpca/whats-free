@@ -1,10 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
-import moment from 'moment';
 
 import CurrentMeeting from './CurrentMeeting';
 import MeetingDisplay from './MeetingDisplay';
-import Time from './Time';
 
 class CalendarItem extends Component {
   nextStatus() {
@@ -88,7 +87,7 @@ CalendarItem.propTypes = {
   calendar: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    events: PropTypes.arrayOf(React.PropTypes.shape({
+    events: PropTypes.arrayOf(PropTypes.shape({
       start: PropTypes.shape({ dateTime: PropTypes.string.isRequired }),
       end: PropTypes.shape({ dateTime: PropTypes.string.isRequired }),
     })),

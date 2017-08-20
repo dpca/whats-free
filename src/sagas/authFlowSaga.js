@@ -2,9 +2,11 @@ import { delay } from 'redux-saga';
 import { take, call, put } from 'redux-saga/effects';
 import { AUTH_REQUEST, authSuccess, authFailure } from '../actions';
 
+const gapi = window.gapi;
+
 function checkAuth(immediate) {
   return gapi.auth.authorize({
-    client_id: process.env.CLIENT_ID,
+    client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
     scope: 'https://www.googleapis.com/auth/calendar',
     immediate
   });
