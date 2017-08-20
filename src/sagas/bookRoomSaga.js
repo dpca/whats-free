@@ -2,6 +2,8 @@ import { takeEvery, delay } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { BOOK_ROOM, roomBooked } from '../actions';
 
+const gapi = window.gapi;
+
 function callGoogle(action) {
   return gapi.client.calendar.events.insert({
     calendarId: 'primary',

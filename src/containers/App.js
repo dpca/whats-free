@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Router, Route } from 'react-router';
 
 import { authRequest, bookRoom } from '../actions';
 import Authenticate from '../components/Authenticate';
@@ -39,10 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default ({ history }) => {
-  return (
-    <Router history={history}>
-      <Route path="/" component={connect(mapStateToProps, mapDispatchToProps)(App)} />
-    </Router>
-  );
-};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

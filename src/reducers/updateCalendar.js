@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { CALENDAR_UPDATED } from '../actions';
-import calendars from '../../calendars.json';
+import calendars from '../calendars.json';
 
 const initialState = _.reduce(calendars, (obj, calendar) => {
   return _.assign({}, obj, {

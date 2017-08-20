@@ -3,7 +3,9 @@ import { takeLatest, delay } from 'redux-saga';
 import { take, race, call, put } from 'redux-saga/effects';
 
 import { AUTH_SUCCESS, ROOM_BOOKED, calendarUpdated } from '../actions';
-import calendars from '../../calendars.json';
+import calendars from '../calendars.json';
+
+const gapi = window.gapi;
 
 function fetchEventsForCal(calendar) {
   return gapi.client.calendar.events.list({
