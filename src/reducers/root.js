@@ -1,5 +1,6 @@
-import { combineReducers } from 'redux';
+// @flow
 
+import { combineReducers } from 'redux';
 import authenticate from './authenticate';
 import updateCalendar from './updateCalendar';
 

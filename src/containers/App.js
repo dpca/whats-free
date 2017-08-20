@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// @flow
 
+import React from 'react';
+import { connect } from 'react-redux';
 import { authRequest, bookRoom } from '../actions';
 import Authenticate from '../components/Authenticate';
 import CalendarList from '../components/CalendarList';
+import type { State, Dispatch } from '../types';
 
 const App = ({ calendarEvents, auth, onBookRoom, onAuthorizeClick }) => {
   if (auth.success) {
@@ -17,19 +18,12 @@ const App = ({ calendarEvents, auth, onBookRoom, onAuthorizeClick }) => {
   );
 };
 
-App.propTypes = {
-  calendarEvents: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
-  onBookRoom: PropTypes.func.isRequired,
-  onAuthorizeClick: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   auth: state.auth,
   calendarEvents: state.calendarEvents,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   onAuthorizeClick: () => dispatch(authRequest()),
   onBookRoom: (calendarId, calendarName, summary, start, end) =>
     dispatch(bookRoom(calendarId, calendarName, summary, start, end)),

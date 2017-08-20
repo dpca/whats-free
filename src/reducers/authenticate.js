@@ -1,4 +1,13 @@
+// @flow
+
 import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE } from '../actions';
+import type { Action } from '../actions.js';
+
+export type State = {
+  requesting: boolean,
+  success: boolean,
+  error: ?string,
+};
 
 const initialState = {
   requesting: false,
@@ -6,7 +15,7 @@ const initialState = {
   error: null,
 };
 
-export default function authenticate(state = initialState, action) {
+export default function authenticate(state: State = initialState, action: Action) {
   switch (action.type) {
     case AUTH_REQUEST:
       return { ...state, requesting: true };

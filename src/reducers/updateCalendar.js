@@ -1,24 +1,35 @@
+// @flow
+
 import _ from 'lodash';
 import { CALENDAR_UPDATED } from '../actions';
+import type { Action } from '../actions';
 import calendars from '../calendars.json';
+import type { CalendarEvent } from '../types';
 
-const initialState = _.reduce(calendars, (obj, calendar) =>
-  _.assign(
-    {},
-    obj,
-    {
-      [calendar.id]: {
-        id: calendar.id,
-        name: calendar.name,
-        events: [],
-        loading: true,
-      },
+export type State = {
+  [id: string]: {
+    id: string,
+    name: string,
+    events: CalendarEvent[],
+    loading: boolean,
+  },
+};
+
+const initialState = _.reduce(
+  calendars,
+  (obj, calendar) => ({
+    ...obj,
+    [calendar.id]: {
+      id: calendar.id,
+      name: calendar.name,
+      events: [],
+      loading: true,
     },
-  ),
+  }),
   {},
 );
 
-export default function updateCalendar(state = initialState, action) {
+export default function updateCalendar(state: State = initialState, action: Action) {
   switch (action.type) {
     case CALENDAR_UPDATED:
       return {
