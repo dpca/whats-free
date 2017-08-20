@@ -1,0 +1,17 @@
+---
+  extends:
+    - "react-app"
+    - "airbnb"
+  rules:
+    func-names: "off"
+    no-spaced-func: "warn"
+    space-before-function-paren:
+      - "warn"
+      - anonymous: "always"
+        named: "never"
+    arrow-parens:
+      - "error"
+      - "always"
+    no-underscore-dangle: "off"
+    react/jsx-filename-extension: "off"
+...
