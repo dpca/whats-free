@@ -23,9 +23,19 @@ origins for whatever domain/IP you want to run on.
 
 ## Calendar configuration
 
-Create a calendar.json file in the `src` directory with information about the
-calendars you wish to watch. It should contain a list of calendar objects, each
-having an `id` and `name` field.
+Create a `src/calendar.json` file with information about the calendars you wish
+to watch. It should contain a list of calendar objects, each having an `id` and
+`name` field:
+
+```
+[
+  {
+    "id": "XXXXXXXXXX@resource.calendar.google.com",
+    "name": "Example room 1"
+  },
+  ...
+]
+```
 
 ## Deploy
 
