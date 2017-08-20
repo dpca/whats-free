@@ -1,24 +1,17 @@
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export function authRequest() {
-  return {
-    type: AUTH_REQUEST
-  }
-};
+  return { type: AUTH_REQUEST };
+}
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export function authSuccess() {
-  return {
-    type: AUTH_SUCCESS
-  }
-};
+  return { type: AUTH_SUCCESS };
+}
 
 export const AUTH_FAILURE = 'AUTH_FAILURE';
 export function authFailure(error) {
-  return {
-    type: AUTH_FAILURE,
-    error
-  }
-};
+  return { type: AUTH_FAILURE, error };
+}
 
 export const CALENDAR_UPDATED = 'CALENDAR_UPDATED';
 export function calendarUpdated(calendarId, calendarName, nextEvents) {
@@ -26,9 +19,9 @@ export function calendarUpdated(calendarId, calendarName, nextEvents) {
     type: CALENDAR_UPDATED,
     calendarId,
     calendarName,
-    nextEvents
-  }
-};
+    nextEvents,
+  };
+}
 
 export const BOOK_ROOM = 'BOOK_ROOM';
 export function bookRoom(calendarId, calendarName, summary, start, end) {
@@ -38,14 +31,14 @@ export function bookRoom(calendarId, calendarName, summary, start, end) {
     calendarName,
     summary,
     start,
-    end
-  }
-};
+    end,
+  };
+}
 
 export const ROOM_BOOKED = 'ROOM_BOOKED';
 export function roomBooked(calendarId) {
   return {
     type: ROOM_BOOKED,
-    calendarId
-  }
-};
+    calendarId,
+  };
+}

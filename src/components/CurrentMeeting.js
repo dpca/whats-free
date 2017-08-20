@@ -4,6 +4,12 @@ import moment from 'moment';
 
 import MeetingDisplay from './MeetingDisplay';
 
+const Free = (
+  <div>
+    Free
+  </div>
+);
+
 class CurrentMeeting extends Component {
   constructor() {
     super();
@@ -12,18 +18,12 @@ class CurrentMeeting extends Component {
 
   bookRoom() {
     const { calendarId, calendarName, onBookRoom } = this.props;
-    onBookRoom(calendarId,
-               calendarName,
-               'Dev testing, please ignore',
-               moment(),
-               moment().add(1, 'hour'));
-  }
-
-  renderFree() {
-    return (
-      <div>
-        Free
-      </div>
+    onBookRoom(
+      calendarId,
+      calendarName,
+      'Dev testing, please ignore',
+      moment(),
+      moment().add(1, 'hour'),
     );
   }
 
@@ -34,7 +34,7 @@ class CurrentMeeting extends Component {
     } else if (loading) {
       return <div>Loading...</div>;
     }
-    return this.renderFree();
+    return Free;
   }
 }
 

@@ -24,19 +24,15 @@ App.propTypes = {
   onAuthorizeClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth,
-    calendarEvents: state.calendarEvents,
-  };
-};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  calendarEvents: state.calendarEvents,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAuthorizeClick: () => dispatch(authRequest()),
-    onBookRoom: (calendarId, calendarName, summary, start, end) =>
-      dispatch(bookRoom(calendarId, calendarName, summary, start, end)),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  onAuthorizeClick: () => dispatch(authRequest()),
+  onBookRoom: (calendarId, calendarName, summary, start, end) =>
+    dispatch(bookRoom(calendarId, calendarName, summary, start, end)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

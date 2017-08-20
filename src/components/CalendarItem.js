@@ -9,7 +9,7 @@ class CalendarItem extends Component {
   nextStatus() {
     const nextMeeting = this.nextMeeting();
     if (nextMeeting) {
-      return <MeetingDisplay event={nextMeeting} isFuture={true} />
+      return <MeetingDisplay event={nextMeeting} isFuture />;
     }
     return null;
   }
@@ -24,12 +24,10 @@ class CalendarItem extends Component {
       } else if (eventStart - now < 3600000) {
         // within the hour
         return 'list-group-item-warning';
-      } else {
-        return 'list-group-item-success';
       }
-    } else {
       return 'list-group-item-success';
     }
+    return 'list-group-item-success';
   }
 
   currentMeeting() {
@@ -46,8 +44,9 @@ class CalendarItem extends Component {
   }
 
   nextMeeting() {
-    return _.find(this.props.calendar.events, (event) =>
-      new Date(event.start.dateTime) > new Date()
+    return _.find(
+      this.props.calendar.events,
+      (event) => new Date(event.start.dateTime) > new Date(),
     );
   }
 
@@ -79,7 +78,7 @@ class CalendarItem extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -91,7 +90,8 @@ CalendarItem.propTypes = {
       start: PropTypes.shape({ dateTime: PropTypes.string.isRequired }),
       end: PropTypes.shape({ dateTime: PropTypes.string.isRequired }),
     })),
-  }).isRequired
-}
+  }).isRequired,
+  onBookRoom: PropTypes.func.isRequired,
+};
 
 export default CalendarItem;

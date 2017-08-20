@@ -3,7 +3,7 @@ import React from 'react';
 
 import CalendarItem from './CalendarItem';
 
-const CalendarList = ({ calendarEvents, onBookRoom }) => {
+function CalendarList({ calendarEvents, onBookRoom }) {
   return (
     <div className="container-fluid">
       <div className="list-group">
@@ -13,15 +13,13 @@ const CalendarList = ({ calendarEvents, onBookRoom }) => {
           <div className="col-sm-5">Next meeting</div>
         </div>
         {
-          _.map(calendarEvents, (cal, id) => {
-            return (
-              <CalendarItem key={id} calendar={cal} onBookRoom={onBookRoom} />
-            );
-          })
+          _.map(calendarEvents, (cal, id) => (
+            <CalendarItem key={id} calendar={cal} onBookRoom={onBookRoom} />
+          ))
         }
       </div>
     </div>
-  )
+  );
 }
 
 export default CalendarList;

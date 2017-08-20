@@ -8,7 +8,7 @@ function checkAuth(immediate) {
   return gapi.auth.authorize({
     client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
     scope: 'https://www.googleapis.com/auth/calendar',
-    immediate
+    immediate,
   });
 }
 
@@ -19,10 +19,9 @@ function loadCalendarApi() {
 function* handleAuth(authResult) {
   if (authResult.error) {
     return yield put(authFailure(authResult.error));
-  } else {
-    yield call(loadCalendarApi);
-    return yield put(authSuccess());
   }
+  yield call(loadCalendarApi);
+  return yield put(authSuccess());
 }
 
 export default function* authFlowSaga() {
@@ -38,7 +37,7 @@ export default function* authFlowSaga() {
 
   // try to authenticate on page load
   try {
-    let authResult = yield call(checkAuth, true);
+    const authResult = yield call(checkAuth, true);
     if (authResult) {
       yield* handleAuth(authResult);
     }
@@ -49,7 +48,7 @@ export default function* authFlowSaga() {
   while (true) {
     try {
       yield take(AUTH_REQUEST);
-      let authResult = yield call(checkAuth, false);
+      const authResult = yield call(checkAuth, false);
       if (authResult) {
         yield* handleAuth(authResult);
       }

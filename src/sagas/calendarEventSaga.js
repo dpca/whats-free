@@ -46,7 +46,7 @@ function* watchCalendar(calendar) {
     yield put(calendarUpdated(calendar.id, response.result.summary, response.result.items));
     yield race([
       // fetch again if room was booked
-      take(action => action.type === ROOM_BOOKED && action.calendarId === calendar.id),
+      take((action) => action.type === ROOM_BOOKED && action.calendarId === calendar.id),
       // or at next event tick
       call(eventsTick, response.result.items),
     ]);

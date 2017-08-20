@@ -21,7 +21,7 @@ class Time extends Component {
   }
 
   render() {
-    return <span>{this.state.timeDisplay.toString()}</span>
+    return <span>{this.state.timeDisplay.toString()}</span>;
   }
 }
 

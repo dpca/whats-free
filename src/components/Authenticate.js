@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Auth = ({ onClick, error }) => {
+function Auth({ onClick, error }) {
   return (
     <div>
       { error ? <div className="alert alert-warning">{error}</div> : null }
@@ -12,10 +12,16 @@ const Auth = ({ onClick, error }) => {
       </button>
     </div>
   );
-};
+}
 
-Auth.propTypes = {
-  onClick: PropTypes.func.isRequired
-};
+Auth.propTypes = PropTypes.oneOfType([
+  PropTypes.shape({
+    onClick: PropTypes.func.isRequired,
+    error: PropTypes.string,
+  }),
+  PropTypes.shape({
+    onClick: PropTypes.func.isRequired,
+  }),
+]);
 
 export default Auth;

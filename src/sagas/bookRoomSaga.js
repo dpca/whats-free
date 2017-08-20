@@ -18,7 +18,7 @@ function callGoogle(action) {
         dateTime: (new Date(action.end)).toISOString(),
         timeZone: 'America/New_York',
       },
-      attendees: [ { email: action.calendarId } ]
+      attendees: [{ email: action.calendarId }],
     },
   });
 }
@@ -29,7 +29,7 @@ function* bookRoom(action) {
     yield delay(1000);
     yield put(roomBooked(action.calendarId));
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 }
 
