@@ -31,7 +31,7 @@ function renderTime(event, isFuture) {
   return <span>ending <Time time={new Date(event.end.dateTime)} /></span>;
 }
 
-function MeetingDisplay({ event, isFuture }: Props) {
+function MeetingDisplay({ event, isFuture = false }: Props) {
   return (
     <div>
       {summaryDisplay(event)}
