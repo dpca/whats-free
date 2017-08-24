@@ -1,7 +1,7 @@
 // @flow
 
 import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE } from '../actions';
-import type { Action } from '../actions.js';
+import type { Action } from '../actions';
 
 export type State = {
   requesting: boolean,

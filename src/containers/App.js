@@ -7,7 +7,7 @@ import Authenticate from '../components/Authenticate';
 import CalendarList from '../components/CalendarList';
 import type { State, Dispatch } from '../types';
 
-const App = ({ calendarEvents, auth, onBookRoom, onAuthorizeClick }) => {
+function App({ calendarEvents, auth, onBookRoom, onAuthorizeClick }) {
   if (auth.success) {
     return (
       <CalendarList calendarEvents={calendarEvents} onBookRoom={onBookRoom} />
@@ -16,7 +16,7 @@ const App = ({ calendarEvents, auth, onBookRoom, onAuthorizeClick }) => {
   return (
     <Authenticate onClick={onAuthorizeClick} error={auth.error} />
   );
-};
+}
 
 const mapStateToProps = (state: State) => ({
   auth: state.auth,

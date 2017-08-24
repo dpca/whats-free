@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import './Authenticate.css';
 
 type Props = {
   onClick: Function,
@@ -9,13 +10,20 @@ type Props = {
 
 function Auth({ onClick, error }: Props) {
   return (
-    <div>
-      { error ? <div className="alert alert-warning">{error}</div> : null }
-      Please authenticate with Google:
-      &nbsp;
-      <button onClick={onClick}>
-        Authenticate
-      </button>
+    <div className="Authenticate">
+      <div className="wrapper">
+        <div className="form">
+          <h3 className="text-center">Please sign in</h3>
+          <hr />
+          <a className="btn btn-lg btn-primary btn-block" onClick={onClick}>
+            <i className="fa fa-google" />
+            &nbsp;
+            &nbsp;
+            Login with Google
+          </a>
+          { error ? <div className="alert alert-warning">{error}</div> : null }
+        </div>
+      </div>
     </div>
   );
 }
