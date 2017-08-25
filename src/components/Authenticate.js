@@ -15,12 +15,12 @@ function Auth({ onClick, error }: Props) {
         <div className="form">
           <h3 className="text-center">Please sign in</h3>
           <hr />
-          <a className="btn btn-lg btn-primary btn-block" onClick={onClick}>
+          <button className="btn btn-lg btn-primary btn-block" onClick={onClick}>
             <i className="fa fa-google" />
             &nbsp;
             &nbsp;
             Login with Google
-          </a>
+          </button>
           { error ? <div className="alert alert-warning">{error}</div> : null }
         </div>
       </div>

@@ -61,13 +61,13 @@ class CalendarItem extends Component<Props> {
     const padded = { paddingTop: 5, paddingBottom: 5 };
 
     return (
-      <div className={`list-group-item row ${this.rowClass()}`}>
-        <div className="col-sm-2">
+      <li className={`CalendarItem row ${this.rowClass()}`}>
+        <div className="col-2">
           <div style={padded}>
             {calendar.name}
           </div>
         </div>
-        <div className="col-sm-5">
+        <div className="col-5">
           <div style={padded}>
             <CurrentMeeting
               calendarId={calendar.id}
@@ -78,12 +78,12 @@ class CalendarItem extends Component<Props> {
             />
           </div>
         </div>
-        <div className="col-sm-5">
+        <div className="col-5">
           <div style={padded}>
             {this.nextStatus()}
           </div>
         </div>
-      </div>
+      </li>
     );
   }
 }

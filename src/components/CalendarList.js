@@ -12,19 +12,19 @@ type Props = {
 
 function CalendarList({ calendarEvents, onBookRoom }: Props) {
   return (
-    <div className="container-fluid">
-      <div className="list-group">
-        <div className="list-group-item row hidden-xs">
-          <div className="col-sm-2">Room</div>
-          <div className="col-sm-5">Status</div>
-          <div className="col-sm-5">Next meeting</div>
-        </div>
+    <div>
+      <div className="row CalendarItem">
+        <div className="col-2"><h4>Room</h4></div>
+        <div className="col-5"><h4>Status</h4></div>
+        <div className="col-5"><h4>Next meeting</h4></div>
+      </div>
+      <ul className="list-unstyled">
         {
           _.map(calendarEvents, (cal, id) => (
             <CalendarItem key={id} calendar={cal} onBookRoom={onBookRoom} />
           ))
         }
-      </div>
+      </ul>
     </div>
   );
 }
