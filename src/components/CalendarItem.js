@@ -62,12 +62,12 @@ class CalendarItem extends Component<Props> {
 
     return (
       <li className={`CalendarItem row ${this.rowClass()}`}>
-        <div className="col-2">
+        <div className="col-lg-2">
           <div style={padded}>
             {calendar.name}
           </div>
         </div>
-        <div className="col-5">
+        <div className="col-lg-5">
           <div style={padded}>
             <CurrentMeeting
               calendarId={calendar.id}
@@ -78,7 +78,7 @@ class CalendarItem extends Component<Props> {
             />
           </div>
         </div>
-        <div className="col-5">
+        <div className="col-lg-5">
           <div style={padded}>
             {this.nextStatus()}
           </div>

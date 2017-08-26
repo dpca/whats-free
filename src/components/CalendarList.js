@@ -14,9 +14,9 @@ function CalendarList({ calendarEvents, onBookRoom }: Props) {
   return (
     <div>
       <div className="row CalendarItem">
-        <div className="col-2"><h4>Room</h4></div>
-        <div className="col-5"><h4>Status</h4></div>
-        <div className="col-5"><h4>Next meeting</h4></div>
+        <div className="col-lg-2"><h4>Room</h4></div>
+        <div className="col-lg-5"><h4>Status</h4></div>
+        <div className="col-lg-5"><h4>Next meeting</h4></div>
       </div>
       <ul className="list-unstyled">
         {

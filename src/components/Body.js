@@ -12,7 +12,7 @@ type Props = {
 function Body({ calendarEvents, onBookRoom }: Props) {
   return (
     <div className="row">
-      <div className="col-sm-3 col-md-2 sidebar bg-light d-none d-sm-block">
+      <div className="col-md-3 col-lg-2 sidebar bg-light d-none d-md-block">
         <h5>
           Legend:
         </h5>
@@ -28,7 +28,7 @@ function Body({ calendarEvents, onBookRoom }: Props) {
           </li>
         </ul>
       </div>
-      <div className="col-sm-9 col-md-10 ml-sm-auto main">
+      <div className="col-md-9 col-lg-10 ml-md-auto main">
         <CalendarList calendarEvents={calendarEvents} onBookRoom={onBookRoom} />
       </div>
     </div>
