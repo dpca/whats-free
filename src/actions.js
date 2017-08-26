@@ -78,10 +78,23 @@ export function roomBooked(calendarId: string): RoomBooked {
   };
 }
 
+type FilterChanged = {|
+  type: 'CHANGE_FILTER',
+  group: string,
+|};
+export const CHANGE_FILTER = 'CHANGE_FILTER';
+export function changeFilter(group: string): FilterChanged {
+  return {
+    type: CHANGE_FILTER,
+    group,
+  };
+}
+
 export type Action =
   AuthRequest |
   AuthSuccess |
   AuthFailure |
   CalendarUpdated |
   BookRoom |
-  RoomBooked;
+  RoomBooked |
+  FilterChanged;

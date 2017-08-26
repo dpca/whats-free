@@ -4,6 +4,7 @@ import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
 import type { Action } from './actions';
 import type { State as AuthState } from './reducers/authenticate';
 import type { State as CalendarState } from './reducers/updateCalendar';
+import type { State as FilterChangedState } from './reducers/changeFilter';
 
 // Calendar types
 
@@ -66,6 +67,7 @@ export type CalendarEvent = {
 export type Calendar = {
   id: string,
   name: string,
+  group: string,
   events: CalendarEvent[],
   loading: boolean,
 };
@@ -75,6 +77,7 @@ export type Calendar = {
 export type State = {|
   auth: AuthState,
   calendarEvents: CalendarState,
+  selectedGroup: FilterChangedState,
 |};
 
 export type Store = ReduxStore<State, Action>;

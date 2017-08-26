@@ -10,6 +10,7 @@ export type State = {
   [id: string]: {
     id: string,
     name: string,
+    group: string,
     events: CalendarEvent[],
     loading: boolean,
   },
@@ -22,6 +23,7 @@ const initialState = _.reduce(
     [calendar.id]: {
       id: calendar.id,
       name: calendar.name,
+      group: calendar.group,
       events: [],
       loading: true,
     },
@@ -35,7 +37,7 @@ export default function updateCalendar(state: State = initialState, action: Acti
       return {
         ...state,
         [action.calendarId]: {
-          ...state.calendarId,
+          ...state[action.calendarId],
           id: action.calendarId,
           name: action.calendarName,
           events: action.nextEvents,
