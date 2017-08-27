@@ -19,8 +19,8 @@ function fetchEventsForCal(calendar) {
 }
 
 function* eventsTick(events) {
-  // 1 min max between updates
-  const MAX_TICK = 60000;
+  // 10 min max between updates
+  const MAX_TICK = 600000;
   let nextTick = MAX_TICK;
   if (events.length > 0) {
     const eventStart = new Date(events[0].start.dateTime);
