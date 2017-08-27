@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Free = (
-  <div>
+  <div className="Meeting">
     Free
   </div>
 );
@@ -33,7 +33,7 @@ function CurrentMeeting({ event, loading }: Props) {
   if (event) {
     return <MeetingDisplay event={event} />;
   } else if (loading) {
-    return <div>Loading...</div>;
+    return <div className="Meeting">Loading...</div>;
   }
   return Free;
 }

@@ -5,6 +5,7 @@ import type { Action } from './actions';
 import type { State as AuthState } from './reducers/authenticate';
 import type { State as CalendarState } from './reducers/updateCalendar';
 import type { State as FilterChangedState } from './reducers/changeFilter';
+import type { State as SidebarState } from './reducers/toggleSidebar';
 
 // Calendar types
 
@@ -78,6 +79,7 @@ export type State = {|
   auth: AuthState,
   calendarEvents: CalendarState,
   selectedGroup: FilterChangedState,
+  showSidebar: SidebarState,
 |};
 
 export type Store = ReduxStore<State, Action>;

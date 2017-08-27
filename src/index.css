@@ -26,26 +26,16 @@ button {
   padding-right: 5;
 }
 
-.sidebar .nav {
-  margin-bottom: 20px;
-}
-
-.sidebar .nav-item {
-  width: 100%;
-}
-
-.sidebar .nav-item + .nav-item {
-  margin-left: 0;
-}
-
-.sidebar .nav-link {
-  border-radius: 0;
-}
-
 .main {
   padding-top: 10px;
 }
 
 .CalendarItem {
+  margin-top: 1px;
   padding: 5px;
+}
+
+.Meeting {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

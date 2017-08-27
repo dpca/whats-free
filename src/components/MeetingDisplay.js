@@ -33,7 +33,7 @@ function renderTime(event, isFuture) {
 
 function MeetingDisplay({ event, isFuture = false }: Props) {
   return (
-    <div>
+    <div className="Meeting">
       {summaryDisplay(event)}
       <Attendees event={event} />,&nbsp;
       {renderTime(event, isFuture)}

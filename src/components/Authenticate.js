@@ -21,7 +21,7 @@ function Auth({ onClick, error }: Props) {
             &nbsp;
             Login with Google
           </button>
-          { error ? <div className="alert alert-warning">{error}</div> : null }
+          { error ? <div className="mt-1 alert alert-warning">{error}</div> : null }
         </div>
       </div>
     </div>

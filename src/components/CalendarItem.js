@@ -58,17 +58,16 @@ class CalendarItem extends Component<Props> {
 
   render() {
     const { calendar, onBookRoom } = this.props;
-    const padded = { paddingTop: 5, paddingBottom: 5 };
 
     return (
       <li className={`CalendarItem row ${this.rowClass()}`}>
         <div className="col-lg-2">
-          <div style={padded}>
+          <div className="Meeting">
             {calendar.name}
           </div>
         </div>
         <div className="col-lg-5">
-          <div style={padded}>
+          <div>
             <CurrentMeeting
               calendarId={calendar.id}
               calendarName={calendar.name}
@@ -79,7 +78,7 @@ class CalendarItem extends Component<Props> {
           </div>
         </div>
         <div className="col-lg-5">
-          <div style={padded}>
+          <div>
             {this.nextStatus()}
           </div>
         </div>

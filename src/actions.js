@@ -90,6 +90,14 @@ export function changeFilter(group: string): FilterChanged {
   };
 }
 
+type ToggleSidebar = {|
+  type: 'TOGGLE_SIDEBAR',
+|};
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+export function toggleSidebar(): ToggleSidebar {
+  return { type: TOGGLE_SIDEBAR };
+}
+
 export type Action =
   AuthRequest |
   AuthSuccess |
@@ -97,4 +105,5 @@ export type Action =
   CalendarUpdated |
   BookRoom |
   RoomBooked |
-  FilterChanged;
+  FilterChanged |
+  ToggleSidebar;
