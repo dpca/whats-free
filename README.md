@@ -24,14 +24,15 @@ origins for whatever domain/IP you want to run on.
 ## Calendar configuration
 
 Create a `src/calendar.json` file with information about the calendars you wish
-to watch. It should contain a list of calendar objects, each having an `id` and
-`name` field:
+to watch. It should contain a list of calendar objects having `id`, `name`, and
+`group` fields:
 
 ```
 [
   {
     "id": "XXXXXXXXXX@resource.calendar.google.com",
-    "name": "Example room 1"
+    "name": "Example room 1",
+    "group": "8th floor"
   },
   ...
 ]
@@ -49,3 +50,11 @@ scp build/* SERVER
 Install nginx and set it up to serve the static files in the `build/`
 directory (edit the `/etc/nginx/sites-available/default` file to point `root`
 to the location of the build folder)
+
+Or, use a Dockerfile like the following:
+
+```
+FROM nginx
+COPY build/ /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]
+```
