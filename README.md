@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/dpca/whats-free.svg?branch=master)](https://travis-ci.org/dpca/whats-free)
 [![Code Climate](https://codeclimate.com/github/dpca/whats-free/badges/gpa.svg)](https://codeclimate.com/github/dpca/whats-free)
+[![Coverage Status](https://coveralls.io/repos/github/dpca/whats-free/badge.svg?branch=master)](https://coveralls.io/github/dpca/whats-free?branch=master)
 
 * * *
 
