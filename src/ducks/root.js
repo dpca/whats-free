@@ -2,15 +2,15 @@
 
 import { combineReducers } from 'redux';
 import authenticate from './authenticate';
-import updateCalendar from './updateCalendar';
-import changeFilter from './changeFilter';
-import toggleSidebar from './toggleSidebar';
+import calendarReducer from './calendar';
+import filterReducer from './filter';
+import sidebarReducer from './sidebar';
 
 const rootReducer = combineReducers({
   auth: authenticate,
-  calendarEvents: updateCalendar,
-  selectedGroup: changeFilter,
-  showSidebar: toggleSidebar,
+  calendarEvents: calendarReducer,
+  selectedGroup: filterReducer,
+  showSidebar: sidebarReducer,
 });
 
 export default rootReducer;

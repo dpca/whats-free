@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { delay } from 'redux-saga';
 import { take, race, call, put, takeLatest, all } from 'redux-saga/effects';
 import { AUTH_SUCCESS } from '../ducks/authenticate';
-import { calendarUpdated } from '../ducks/updateCalendar';
+import { calendarUpdated } from '../ducks/calendar';
 import { ROOM_BOOKED } from '../actions';
 import calendars from '../calendars.json';
 

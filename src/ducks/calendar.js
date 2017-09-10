@@ -35,7 +35,7 @@ const initialState = _.reduce(
   {},
 );
 
-export default function updateCalendar(state: State = initialState, action: Action) {
+export default function reducer(state: State = initialState, action: Action) {
   switch (action.type) {
     case CALENDAR_UPDATED:
       return {

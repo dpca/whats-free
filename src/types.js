@@ -2,9 +2,9 @@
 
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
 import type { State as AuthState } from './ducks/authenticate';
-import type { State as CalendarState } from './ducks/updateCalendar';
-import type { State as FilterChangedState } from './ducks/changeFilter';
-import type { State as SidebarState } from './ducks/toggleSidebar';
+import type { State as CalendarState } from './ducks/calendar';
+import type { State as FilterChangedState } from './ducks/filter';
+import type { State as SidebarState } from './ducks/sidebar';
 import type { BookRoom, RoomBooked } from './actions';
 
 // Calendar types

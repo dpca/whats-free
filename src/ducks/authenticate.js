@@ -22,7 +22,7 @@ const initialState = {
   error: null,
 };
 
-export default function authenticate(state: State = initialState, action: Action) {
+export default function reducer(state: State = initialState, action: Action) {
   switch (action.type) {
     case AUTH_REQUEST:
       return { ...state, requesting: true };
