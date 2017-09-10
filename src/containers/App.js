@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const enhance: Connector<{}, Props> = connect(mapStateToProps, mapDispatchToProps);
 
-function App({
+export function App({
   calendarEvents,
   auth,
   onBookRoom,
