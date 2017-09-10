@@ -5,7 +5,7 @@ import './Authenticate.css';
 
 type Props = {
   onClick: Function,
-  error?: string,
+  error: ?string,
 };
 
 function Auth({ onClick, error }: Props) {
