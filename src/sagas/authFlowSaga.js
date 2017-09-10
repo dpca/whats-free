@@ -1,6 +1,6 @@
 import { delay } from 'redux-saga';
 import { take, call, put } from 'redux-saga/effects';
-import { AUTH_REQUEST, authSuccess, authFailure } from '../actions';
+import { AUTH_REQUEST, authSuccess, authFailure } from '../ducks/authenticate';
 
 const gapi = window.gapi;
 

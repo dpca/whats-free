@@ -1,11 +1,11 @@
 // @flow
 
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
-import type { Action } from './actions';
-import type { State as AuthState } from './reducers/authenticate';
-import type { State as CalendarState } from './reducers/updateCalendar';
-import type { State as FilterChangedState } from './reducers/changeFilter';
-import type { State as SidebarState } from './reducers/toggleSidebar';
+import type { State as AuthState } from './ducks/authenticate';
+import type { State as CalendarState } from './ducks/updateCalendar';
+import type { State as FilterChangedState } from './ducks/changeFilter';
+import type { State as SidebarState } from './ducks/toggleSidebar';
+import type { BookRoom, RoomBooked } from './actions';
 
 // Calendar types
 
@@ -81,6 +81,21 @@ export type State = {|
   selectedGroup: FilterChangedState,
   showSidebar: SidebarState,
 |};
+
+export type Action =
+  {| type: 'AUTH_REQUEST' |} |
+  {| type: 'AUTH_SUCCESS' |} |
+  {| type: 'AUTH_FAILURE', error: string |} |
+  {|
+    type: 'CALENDAR_UPDATED',
+    calendarId: string,
+    calendarName: string,
+    nextEvents: CalendarEvent[],
+  |} |
+  BookRoom |
+  RoomBooked |
+  {| type: 'CHANGE_FILTER', group: string |} |
+  {| type: 'TOGGLE_SIDEBAR' |};
 
 export type Store = ReduxStore<State, Action>;
 export type Dispatch = ReduxDispatch<Action>;

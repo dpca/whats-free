@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { authRequest, bookRoom, changeFilter, toggleSidebar } from '../actions';
+import { authRequest } from '../ducks/authenticate';
+import { changeFilter } from '../ducks/changeFilter';
+import { toggleSidebar } from '../ducks/toggleSidebar';
+import { bookRoom } from '../actions';
 import Authenticate from '../components/Authenticate';
 import Body from '../components/Body';
 import type { State, Dispatch } from '../types';

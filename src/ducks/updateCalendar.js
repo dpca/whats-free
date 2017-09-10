@@ -1,10 +1,14 @@
 // @flow
 
 import _ from 'lodash';
-import { CALENDAR_UPDATED } from '../actions';
-import type { Action } from '../actions';
 import calendars from '../calendars.json';
-import type { CalendarEvent } from '../types';
+import type { CalendarEvent, Action } from '../types';
+
+// Actions
+
+export const CALENDAR_UPDATED = 'CALENDAR_UPDATED';
+
+// Reducer
 
 export type State = {
   [id: string]: {
@@ -47,4 +51,19 @@ export default function updateCalendar(state: State = initialState, action: Acti
     default:
       return state;
   }
+}
+
+// Action Creators
+
+export function calendarUpdated(
+  calendarId: string,
+  calendarName: string,
+  nextEvents: CalendarEvent[],
+) {
+  return {
+    type: CALENDAR_UPDATED,
+    calendarId,
+    calendarName,
+    nextEvents,
+  };
 }

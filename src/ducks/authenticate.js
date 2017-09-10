@@ -1,7 +1,14 @@
 // @flow
 
-import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE } from '../actions';
-import type { Action } from '../actions';
+import type { Action } from '../types';
+
+// Actions
+
+export const AUTH_REQUEST = 'AUTH_REQUEST';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAILURE = 'AUTH_FAILURE';
+
+// Reducer
 
 export type State = {
   requesting: boolean,
@@ -26,4 +33,18 @@ export default function authenticate(state: State = initialState, action: Action
     default:
       return state;
   }
+}
+
+// Action Creators
+
+export function authRequest() {
+  return { type: AUTH_REQUEST };
+}
+
+export function authSuccess() {
+  return { type: AUTH_SUCCESS };
+}
+
+export function authFailure(error: string) {
+  return { type: AUTH_FAILURE, error };
 }

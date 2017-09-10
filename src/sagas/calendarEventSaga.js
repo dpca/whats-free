@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import { delay } from 'redux-saga';
 import { take, race, call, put, takeLatest, all } from 'redux-saga/effects';
-
-import { AUTH_SUCCESS, ROOM_BOOKED, calendarUpdated } from '../actions';
+import { AUTH_SUCCESS } from '../ducks/authenticate';
+import { calendarUpdated } from '../ducks/updateCalendar';
+import { ROOM_BOOKED } from '../actions';
 import calendars from '../calendars.json';
 
 const gapi = window.gapi;
