@@ -22,4 +22,40 @@ describe('reducer', () => {
       error: null,
     });
   });
+
+  it('should handle AUTH_REQUEST', () => {
+    expect(reducer({
+      requesting: false,
+      success: false,
+      error: null,
+    }, { type: AUTH_REQUEST })).toEqual({
+      requesting: true,
+      success: false,
+      error: null,
+    });
+  });
+
+  it('should handle AUTH_SUCCESS', () => {
+    expect(reducer({
+      requesting: true,
+      success: false,
+      error: null,
+    }, { type: AUTH_SUCCESS })).toEqual({
+      requesting: false,
+      success: true,
+      error: null,
+    });
+  });
+
+  it('should handle AUTH_FAILURE', () => {
+    expect(reducer({
+      requesting: true,
+      success: false,
+      error: null,
+    }, { type: AUTH_FAILURE, error: 'oops' })).toEqual({
+      requesting: false,
+      success: false,
+      error: 'oops',
+    });
+  });
 });
