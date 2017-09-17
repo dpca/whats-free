@@ -9,5 +9,9 @@ engines:
       languages:
         - javascript
 
+ratings:
+  paths:
+    - src/**
+
 exclude_paths:
   - flow-typed/**/*
