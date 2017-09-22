@@ -20,7 +20,7 @@
   "devDependencies": {
     "coveralls": "^2.13.1",
     "dotenv": "^4.0.0",
-    "flow-bin": "^0.54.1",
+    "flow-bin": "^0.55.0",
     "flow-typed": "^2.1.5",
     "react-scripts": "^1.0.13"
   },
