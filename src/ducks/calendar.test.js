@@ -21,6 +21,10 @@ describe('actions', () => {
 });
 
 describe('reducer', () => {
+  it('should return the initial state', () => {
+    expect(reducer(undefined, {})).toBeInstanceOf(Object);
+  });
+
   it('should handle CALENDAR_UPDATED', () => {
     expect(reducer({ fakeId: fakeCalendar }, {
       type: CALENDAR_UPDATED,
