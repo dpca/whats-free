@@ -10,9 +10,12 @@ import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
 
 const store = configureStore();
+const root = document.getElementById('root');
 
-ReactDOM.render(
-  <Root store={store} />,
-  document.getElementById('root'),
-);
+if (root) {
+  ReactDOM.render(<Root store={store} />, root);
+} else {
+  throw new Error("Couldn't find react root!");
+}
+
 registerServiceWorker();
