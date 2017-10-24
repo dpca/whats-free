@@ -39,3 +39,8 @@ button {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+a.RoomLink {
+  color: inherit;
+  text-decoration: underline;
+}

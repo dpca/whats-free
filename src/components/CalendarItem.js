@@ -63,7 +63,13 @@ class CalendarItem extends Component<Props> {
       <li className={`CalendarItem row ${this.rowClass()}`}>
         <div className="col-lg-2">
           <div className="Meeting">
-            {calendar.name}
+            <a
+              href={`https://calendar.google.com/calendar/embed?mode=WEEK&src=${calendar.id}`}
+              target="_blank"
+              className="RoomLink"
+            >
+              {calendar.name}
+            </a>
           </div>
         </div>
         <div className="col-lg-5">
