@@ -16,7 +16,10 @@ function fetchEventsForCal(calendar) {
     singleEvents: true,
     maxResults: 2,
     orderBy: 'startTime',
-  });
+  }).then(
+    (response) => ({ response }),
+    (error) => ({ error }),
+  );
 }
 
 function* eventsTick(events) {
@@ -43,14 +46,18 @@ function* eventsTick(events) {
 
 function* watchCalendar(calendar) {
   while (true) {
-    const response = yield call(fetchEventsForCal, calendar.id);
-    yield put(calendarUpdated(calendar.id, response.result.summary, response.result.items));
-    yield race([
-      // fetch again if room was booked
-      take((action) => action.type === ROOM_BOOKED && action.calendarId === calendar.id),
-      // or at next event tick
-      call(eventsTick, response.result.items),
-    ]);
+    const { response } = yield call(fetchEventsForCal, calendar.id);
+    if (response) {
+      yield put(calendarUpdated(calendar.id, response.result.summary, response.result.items));
+      yield race([
+        // fetch again if room was booked
+        take((action) => action.type === ROOM_BOOKED && action.calendarId === calendar.id),
+        // or at next event tick
+        call(eventsTick, response.result.items),
+      ]);
+    } else {
+      yield call(eventsTick, []);
+    }
   }
 }
 
