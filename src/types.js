@@ -83,19 +83,19 @@ export type State = {|
 |};
 
 export type Action =
-  {| type: 'AUTH_REQUEST' |} |
-  {| type: 'AUTH_SUCCESS' |} |
-  {| type: 'AUTH_FAILURE', error: string |} |
-  {|
-    type: 'CALENDAR_UPDATED',
-    calendarId: string,
-    calendarName: string,
-    nextEvents: CalendarEvent[],
-  |} |
-  BookRoom |
-  RoomBooked |
-  {| type: 'CHANGE_FILTER', group: string |} |
-  {| type: 'TOGGLE_SIDEBAR' |};
+  | {| type: 'AUTH_REQUEST' |}
+  | {| type: 'AUTH_SUCCESS' |}
+  | {| type: 'AUTH_FAILURE', error: string |}
+  | {|
+      type: 'CALENDAR_UPDATED',
+      calendarId: string,
+      calendarName: string,
+      nextEvents: CalendarEvent[],
+    |}
+  | BookRoom
+  | RoomBooked
+  | {| type: 'CHANGE_FILTER', group: string |}
+  | {| type: 'TOGGLE_SIDEBAR' |};
 
 export type Store = ReduxStore<State, Action>;
 export type Dispatch = ReduxDispatch<Action>;

@@ -19,7 +19,7 @@ type Props = {
   onBookRoom: Function,
   onAuthorizeClick: () => any,
   selectedGroup: string,
-  onSelectGroup: (string) => any,
+  onSelectGroup: string => any,
   showSidebar: boolean,
   onToggleSidebar: () => any,
 };
@@ -35,11 +35,14 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   onAuthorizeClick: () => dispatch(authRequest()),
   onBookRoom: (calendarId, calendarName, summary, start, end) =>
     dispatch(bookRoom(calendarId, calendarName, summary, start, end)),
-  onSelectGroup: (group) => dispatch(changeFilter(group)),
+  onSelectGroup: group => dispatch(changeFilter(group)),
   onToggleSidebar: () => dispatch(toggleSidebar()),
 });
 
-const enhance: Connector<{}, Props> = connect(mapStateToProps, mapDispatchToProps);
+const enhance: Connector<{}, Props> = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
 
 export function App({
   calendarEvents,
@@ -55,21 +58,25 @@ export function App({
     <div>
       <nav className="navbar navbar-dark bg-dark fixed-top">
         <div className="navbar-brand">{"What's free?"}</div>
-        <button className="navbar-toggler d-md-none" type="button" onClick={onToggleSidebar}>
+        <button
+          className="navbar-toggler d-md-none"
+          type="button"
+          onClick={onToggleSidebar}
+        >
           <span className="navbar-toggler-icon" />
         </button>
       </nav>
-      {
-        auth.success ?
-          <Body
-            calendarEvents={calendarEvents}
-            onBookRoom={onBookRoom}
-            selectedGroup={selectedGroup}
-            onSelectGroup={onSelectGroup}
-            showSidebar={showSidebar}
-          /> :
-          <Authenticate onClick={onAuthorizeClick} error={auth.error} />
-      }
+      {auth.success ? (
+        <Body
+          calendarEvents={calendarEvents}
+          onBookRoom={onBookRoom}
+          selectedGroup={selectedGroup}
+          onSelectGroup={onSelectGroup}
+          showSidebar={showSidebar}
+        />
+      ) : (
+        <Authenticate onClick={onAuthorizeClick} error={auth.error} />
+      )}
     </div>
   );
 }

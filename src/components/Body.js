@@ -9,7 +9,7 @@ type Props = {
   calendarEvents: Calendar[],
   onBookRoom: Function,
   selectedGroup: string,
-  onSelectGroup: (string) => void,
+  onSelectGroup: string => void,
   showSidebar: boolean,
 };
 
@@ -20,30 +20,35 @@ function filterCalendars(calendarEvents, selectedGroup) {
   return _.filter(calendarEvents, ({ group }) => group === selectedGroup);
 }
 
-function Body({ calendarEvents, onBookRoom, selectedGroup, onSelectGroup, showSidebar }: Props) {
+function Body({
+  calendarEvents,
+  onBookRoom,
+  selectedGroup,
+  onSelectGroup,
+  showSidebar,
+}: Props) {
   return (
     <div className="row">
-      <div className={`col-md-3 col-lg-2 sidebar bg-light d-md-block ${showSidebar ? '' : 'd-none'}`}>
-        <select className="form-control" onChange={(event) => onSelectGroup(event.target.value)}>
-          <option value="all">
-            Show all
-          </option>
-          {
-            _.map(_.uniq(_.map(calendarEvents, 'group')), (group) => (
-              <option key={group} value={group}>
-                {group}
-              </option>
-            ))
-          }
+      <div
+        className={`col-md-3 col-lg-2 sidebar bg-light d-md-block ${
+          showSidebar ? '' : 'd-none'
+        }`}
+      >
+        <select
+          className="form-control"
+          onChange={event => onSelectGroup(event.target.value)}
+        >
+          <option value="all">Show all</option>
+          {_.map(_.uniq(_.map(calendarEvents, 'group')), group => (
+            <option key={group} value={group}>
+              {group}
+            </option>
+          ))}
         </select>
         <br />
-        <h5>
-          Legend:
-        </h5>
+        <h5>Legend:</h5>
         <ul className="list-group">
-          <li className="list-group-item list-group-item-success">
-            Free
-          </li>
+          <li className="list-group-item list-group-item-success">Free</li>
           <li className="list-group-item list-group-item-warning">
             Reserved within the hour
           </li>

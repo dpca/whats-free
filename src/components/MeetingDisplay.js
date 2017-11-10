@@ -26,9 +26,17 @@ function summaryDisplay(event) {
 
 function renderTime(event, isFuture) {
   if (isFuture) {
-    return <span>starting <Time time={new Date(event.start.dateTime)} /></span>;
+    return (
+      <span>
+        starting <Time time={new Date(event.start.dateTime)} />
+      </span>
+    );
   }
-  return <span>ending <Time time={new Date(event.end.dateTime)} /></span>;
+  return (
+    <span>
+      ending <Time time={new Date(event.end.dateTime)} />
+    </span>
+  );
 }
 
 function MeetingDisplay({ event, isFuture = false }: Props) {

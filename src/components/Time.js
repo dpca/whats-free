@@ -32,7 +32,7 @@ class Time extends Component<Props, State> {
 
   tick = () => {
     this.setState({ timeDisplay: moment(this.props.time).fromNow() });
-  }
+  };
 
   render() {
     return <span>{this.state.timeDisplay}</span>;

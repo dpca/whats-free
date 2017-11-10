@@ -16,7 +16,7 @@ export function bookRoom(
   calendarName: string,
   summary: string,
   start: string,
-  end: string,
+  end: string
 ): BookRoom {
   return {
     type: BOOK_ROOM,

@@ -9,17 +9,16 @@ import calendars from '../calendars.json';
 const gapi = window.gapi;
 
 function fetchEventsForCal(calendar) {
-  return gapi.client.calendar.events.list({
-    calendarId: calendar,
-    timeMin: (new Date()).toISOString(),
-    showDeleted: false,
-    singleEvents: true,
-    maxResults: 2,
-    orderBy: 'startTime',
-  }).then(
-    (response) => ({ response }),
-    (error) => ({ error }),
-  );
+  return gapi.client.calendar.events
+    .list({
+      calendarId: calendar,
+      timeMin: new Date().toISOString(),
+      showDeleted: false,
+      singleEvents: true,
+      maxResults: 2,
+      orderBy: 'startTime',
+    })
+    .then(response => ({ response }), error => ({ error }));
 }
 
 function* eventsTick(events) {
@@ -48,10 +47,19 @@ function* watchCalendar(calendar) {
   while (true) {
     const { response } = yield call(fetchEventsForCal, calendar.id);
     if (response) {
-      yield put(calendarUpdated(calendar.id, response.result.summary, response.result.items));
+      yield put(
+        calendarUpdated(
+          calendar.id,
+          response.result.summary,
+          response.result.items
+        )
+      );
       yield race([
         // fetch again if room was booked
-        take((action) => action.type === ROOM_BOOKED && action.calendarId === calendar.id),
+        take(
+          action =>
+            action.type === ROOM_BOOKED && action.calendarId === calendar.id
+        ),
         // or at next event tick
         call(eventsTick, response.result.items),
       ]);
@@ -62,7 +70,7 @@ function* watchCalendar(calendar) {
 }
 
 function* fetchCalendars() {
-  yield all(_.map(calendars, (calendar) => call(watchCalendar, calendar)));
+  yield all(_.map(calendars, calendar => call(watchCalendar, calendar)));
 }
 
 export default function* calendarEventSaga() {

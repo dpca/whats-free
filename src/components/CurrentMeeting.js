@@ -13,11 +13,7 @@ type Props = {
   onBookRoom: Function,
 };
 
-const Free = (
-  <div className="Meeting">
-    Free
-  </div>
-);
+const Free = <div className="Meeting">Free</div>;
 
 // function bookRoom({ calendarId, calendarName, onBookRoom }) {
 //   onBookRoom(

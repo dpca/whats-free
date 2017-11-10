@@ -15,6 +15,8 @@ describe('reducer', () => {
   });
 
   it('should handle CHANGE_FILTER', () => {
-    expect(reducer('oldGroup', { type: CHANGE_FILTER, group: 'newGroup' })).toEqual('newGroup');
+    expect(
+      reducer('oldGroup', { type: CHANGE_FILTER, group: 'newGroup' })
+    ).toEqual('newGroup');
   });
 });

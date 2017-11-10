@@ -19,6 +19,6 @@ it('renders without crashing', () => {
       showSidebar
       onToggleSidebar={() => {}}
     />,
-    div,
+    div
   );
 });

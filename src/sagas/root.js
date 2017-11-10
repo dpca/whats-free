@@ -4,9 +4,5 @@ import calendarEventSaga from './calendarEventSaga';
 import bookRoomSaga from './bookRoomSaga';
 
 export default function* rootSaga() {
-  yield all([
-    authFlowSaga(),
-    calendarEventSaga(),
-    bookRoomSaga(),
-  ]);
+  yield all([authFlowSaga(), calendarEventSaga(), bookRoomSaga()]);
 }

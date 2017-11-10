@@ -52,7 +52,7 @@ class CalendarItem extends Component<Props> {
   nextMeeting() {
     return _.find(
       this.props.calendar.events,
-      (event) => new Date(event.start.dateTime) > new Date(),
+      event => new Date(event.start.dateTime) > new Date()
     );
   }
 
@@ -64,7 +64,9 @@ class CalendarItem extends Component<Props> {
         <div className="col-lg-2">
           <div className="Meeting">
             <a
-              href={`https://calendar.google.com/calendar/embed?mode=WEEK&src=${calendar.id}`}
+              href={`https://calendar.google.com/calendar/embed?mode=WEEK&src=${
+                calendar.id
+              }`}
               target="_blank"
               className="RoomLink"
             >
@@ -84,9 +86,7 @@ class CalendarItem extends Component<Props> {
           </div>
         </div>
         <div className="col-lg-5">
-          <div>
-            {this.nextStatus()}
-          </div>
+          <div>{this.nextStatus()}</div>
         </div>
       </li>
     );

@@ -26,12 +26,17 @@ describe('reducer', () => {
   });
 
   it('should handle CALENDAR_UPDATED', () => {
-    expect(reducer({ fakeId: fakeCalendar }, {
-      type: CALENDAR_UPDATED,
-      calendarId: 'fakeId',
-      calendarName: 'fakeName',
-      nextEvents: ['fakeEvent'],
-    })).toEqual({
+    expect(
+      reducer(
+        { fakeId: fakeCalendar },
+        {
+          type: CALENDAR_UPDATED,
+          calendarId: 'fakeId',
+          calendarName: 'fakeName',
+          nextEvents: ['fakeEvent'],
+        }
+      )
+    ).toEqual({
       fakeId: {
         ...fakeCalendar,
         events: ['fakeEvent'],

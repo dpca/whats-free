@@ -15,7 +15,8 @@ function attendeeName(attendee) {
 function Attendees({ event }: Props) {
   const realAttendees = _.reject(
     event.attendees,
-    (attendee) => attendee.resource === true || attendee.responseStatus === 'declined',
+    attendee =>
+      attendee.resource === true || attendee.responseStatus === 'declined'
   );
   if (realAttendees.length > 2) {
     return (

@@ -1,4 +1,11 @@
-import reducer, { AUTH_REQUEST, AUTH_SUCCESS, AUTH_FAILURE, authRequest, authSuccess, authFailure } from './authenticate';
+import reducer, {
+  AUTH_REQUEST,
+  AUTH_SUCCESS,
+  AUTH_FAILURE,
+  authRequest,
+  authSuccess,
+  authFailure,
+} from './authenticate';
 
 describe('actions', () => {
   it('should create an action to request authentication', () => {
@@ -24,11 +31,16 @@ describe('reducer', () => {
   });
 
   it('should handle AUTH_REQUEST', () => {
-    expect(reducer({
-      requesting: false,
-      success: false,
-      error: null,
-    }, { type: AUTH_REQUEST })).toEqual({
+    expect(
+      reducer(
+        {
+          requesting: false,
+          success: false,
+          error: null,
+        },
+        { type: AUTH_REQUEST }
+      )
+    ).toEqual({
       requesting: true,
       success: false,
       error: null,
@@ -36,11 +48,16 @@ describe('reducer', () => {
   });
 
   it('should handle AUTH_SUCCESS', () => {
-    expect(reducer({
-      requesting: true,
-      success: false,
-      error: null,
-    }, { type: AUTH_SUCCESS })).toEqual({
+    expect(
+      reducer(
+        {
+          requesting: true,
+          success: false,
+          error: null,
+        },
+        { type: AUTH_SUCCESS }
+      )
+    ).toEqual({
       requesting: false,
       success: true,
       error: null,
@@ -48,11 +65,16 @@ describe('reducer', () => {
   });
 
   it('should handle AUTH_FAILURE', () => {
-    expect(reducer({
-      requesting: true,
-      success: false,
-      error: null,
-    }, { type: AUTH_FAILURE, error: 'oops' })).toEqual({
+    expect(
+      reducer(
+        {
+          requesting: true,
+          success: false,
+          error: null,
+        },
+        { type: AUTH_FAILURE, error: 'oops' }
+      )
+    ).toEqual({
       requesting: false,
       success: false,
       error: 'oops',

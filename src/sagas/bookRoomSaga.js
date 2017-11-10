@@ -11,11 +11,11 @@ function callGoogle(action) {
       summary: action.summary,
       location: action.calendarName,
       start: {
-        dateTime: (new Date(action.start)).toISOString(),
+        dateTime: new Date(action.start).toISOString(),
         timeZone: 'America/New_York',
       },
       end: {
-        dateTime: (new Date(action.end)).toISOString(),
+        dateTime: new Date(action.end).toISOString(),
         timeZone: 'America/New_York',
       },
       attendees: [{ email: action.calendarId }],

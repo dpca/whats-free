@@ -32,7 +32,7 @@ const initialState = _.reduce(
       loading: true,
     },
   }),
-  {},
+  {}
 );
 
 export default function reducer(state: State = initialState, action: Action) {
@@ -58,7 +58,7 @@ export default function reducer(state: State = initialState, action: Action) {
 export function calendarUpdated(
   calendarId: string,
   calendarName: string,
-  nextEvents: CalendarEvent[],
+  nextEvents: CalendarEvent[]
 ) {
   return {
     type: CALENDAR_UPDATED,
