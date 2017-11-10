@@ -1,0 +1,4 @@
+flow-typed/*
+build/*
+flow-coverage/*
+coverage/*
