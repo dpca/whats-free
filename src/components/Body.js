@@ -2,15 +2,16 @@
 
 import _ from 'lodash';
 import React from 'react';
+import type { RouterHistory, Location } from 'react-router';
 import CalendarList from './CalendarList';
 import type { Calendar } from '../types';
 
 type Props = {
   calendarEvents: Calendar[],
   onBookRoom: Function,
-  selectedGroup: string,
-  onSelectGroup: string => void,
   showSidebar: boolean,
+  history: RouterHistory,
+  location: Location,
 };
 
 function filterCalendars(calendarEvents, selectedGroup) {
@@ -23,10 +24,14 @@ function filterCalendars(calendarEvents, selectedGroup) {
 function Body({
   calendarEvents,
   onBookRoom,
-  selectedGroup,
-  onSelectGroup,
   showSidebar,
+  history,
+  location,
 }: Props) {
+  const selectedGroup =
+    location && location.pathname && location.pathname.length > 1
+      ? location.pathname.slice(1)
+      : 'all';
   return (
     <div className="row">
       <div
@@ -36,7 +41,8 @@ function Body({
       >
         <select
           className="form-control"
-          onChange={event => onSelectGroup(event.target.value)}
+          value={selectedGroup}
+          onChange={event => history.push(event.target.value)}
         >
           <option value="all">Show all</option>
           {_.map(_.uniq(_.map(calendarEvents, 'group')), group => (

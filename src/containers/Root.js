@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import type { Store } from '../types';
 
@@ -11,9 +12,11 @@ type Props = {
 
 function Root({ store }: Props) {
   return (
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   );
 }
 

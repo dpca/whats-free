@@ -4,8 +4,9 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import type { Connector } from 'react-redux';
+import { withRouter } from 'react-router';
+import type { RouterHistory, Location } from 'react-router';
 import { authRequest } from '../ducks/authenticate';
-import { changeFilter } from '../ducks/filter';
 import { toggleSidebar } from '../ducks/sidebar';
 import { bookRoom } from '../actions';
 import Authenticate from '../components/Authenticate';
@@ -18,16 +19,15 @@ type Props = {
   auth: AuthState,
   onBookRoom: Function,
   onAuthorizeClick: () => any,
-  selectedGroup: string,
-  onSelectGroup: string => any,
   showSidebar: boolean,
   onToggleSidebar: () => any,
+  history: RouterHistory,
+  location: Location,
 };
 
 const mapStateToProps = (state: State) => ({
   auth: state.auth,
   calendarEvents: _.values(state.calendarEvents),
-  selectedGroup: state.selectedGroup,
   showSidebar: state.showSidebar,
 });
 
@@ -35,7 +35,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   onAuthorizeClick: () => dispatch(authRequest()),
   onBookRoom: (calendarId, calendarName, summary, start, end) =>
     dispatch(bookRoom(calendarId, calendarName, summary, start, end)),
-  onSelectGroup: group => dispatch(changeFilter(group)),
   onToggleSidebar: () => dispatch(toggleSidebar()),
 });
 
@@ -49,10 +48,10 @@ export function App({
   auth,
   onBookRoom,
   onAuthorizeClick,
-  selectedGroup,
-  onSelectGroup,
   showSidebar,
   onToggleSidebar,
+  history,
+  location,
 }: Props) {
   return (
     <div>
@@ -70,9 +69,9 @@ export function App({
         <Body
           calendarEvents={calendarEvents}
           onBookRoom={onBookRoom}
-          selectedGroup={selectedGroup}
-          onSelectGroup={onSelectGroup}
           showSidebar={showSidebar}
+          history={history}
+          location={location}
         />
       ) : (
         <Authenticate onClick={onAuthorizeClick} error={auth.error} />
@@ -81,4 +80,4 @@ export function App({
   );
 }
 
-export default enhance(App);
+export default withRouter(enhance(App));
