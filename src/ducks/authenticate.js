@@ -7,6 +7,7 @@ import type { Action } from '../types';
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
 // Reducer
 
@@ -45,6 +46,10 @@ export function authSuccess() {
   return { type: AUTH_SUCCESS };
 }
 
-export function authFailure(error: string) {
+export function authFailure(error: ?string) {
   return { type: AUTH_FAILURE, error };
+}
+
+export function authLogout() {
+  return { type: AUTH_LOGOUT };
 }

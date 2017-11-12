@@ -17,10 +17,12 @@ yarn start
 ## Google API configuration
 
 Go to [console.developers.google.com](console.developers.google.com), create a
-project, and enable the Google Calendar API. Create OAuth 2.0 credentials and
-copy the Client ID to an entry in a `.env` file called
-`REACT_APP_GOOGLE_CLIENT_ID` in the top-level directory. Authorize javascript
-origins for whatever domain/IP you want to run on.
+project, and enable the Google Calendar API. Create OAuth 2.0 credentials for
+both a __Web application__ and __API key__. Create a `.env` file with
+`REACT_APP_GOOGLE_CLIENT_ID` with the Client ID from the __Web application__
+credentials and `REACT_APP_GOOGLE_API_KEY` with the API key from the
+__API key__ credentials. Authorize javascript origins for whatever domain/IP
+you want to run on in the __Web application__ section.
 
 ## Calendar configuration
 

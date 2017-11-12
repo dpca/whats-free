@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import type { Connector } from 'react-redux';
 import { withRouter } from 'react-router';
 import type { RouterHistory, Location } from 'react-router';
-import { authRequest } from '../ducks/authenticate';
+import { authRequest, authLogout } from '../ducks/authenticate';
 import { toggleSidebar } from '../ducks/sidebar';
 import { bookRoom } from '../actions';
 import Authenticate from '../components/Authenticate';
@@ -19,6 +19,7 @@ type Props = {
   auth: AuthState,
   onBookRoom: Function,
   onAuthorizeClick: () => any,
+  onLogout: () => any,
   showSidebar: boolean,
   onToggleSidebar: () => any,
   history: RouterHistory,
@@ -33,6 +34,7 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onAuthorizeClick: () => dispatch(authRequest()),
+  onLogout: () => dispatch(authLogout()),
   onBookRoom: (calendarId, calendarName, summary, start, end) =>
     dispatch(bookRoom(calendarId, calendarName, summary, start, end)),
   onToggleSidebar: () => dispatch(toggleSidebar()),
@@ -48,6 +50,7 @@ export function App({
   auth,
   onBookRoom,
   onAuthorizeClick,
+  onLogout,
   showSidebar,
   onToggleSidebar,
   history,
@@ -64,6 +67,19 @@ export function App({
         >
           <span className="navbar-toggler-icon" />
         </button>
+        <ul className="navbar-nav ml-auto">
+          {
+            auth.success &&
+              <li>
+                <button
+                  className="btn my-2 my-sm-0"
+                  onClick={() => onLogout()}
+                >
+                  Sign out
+                </button>
+              </li>
+          }
+        </ul>
       </nav>
       {auth.success ? (
         <Body

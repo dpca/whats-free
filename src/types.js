@@ -3,7 +3,6 @@
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
 import type { State as AuthState } from './ducks/authenticate';
 import type { State as CalendarState } from './ducks/calendar';
-import type { State as FilterChangedState } from './ducks/filter';
 import type { State as SidebarState } from './ducks/sidebar';
 import type { BookRoom, RoomBooked } from './actions';
 
@@ -78,14 +77,14 @@ export type Calendar = {
 export type State = {|
   auth: AuthState,
   calendarEvents: CalendarState,
-  selectedGroup: FilterChangedState,
   showSidebar: SidebarState,
 |};
 
 export type Action =
   | {| type: 'AUTH_REQUEST' |}
   | {| type: 'AUTH_SUCCESS' |}
-  | {| type: 'AUTH_FAILURE', error: string |}
+  | {| type: 'AUTH_FAILURE', error: ?string |}
+  | {| type: 'AUTH_LOGOUT' |}
   | {|
       type: 'CALENDAR_UPDATED',
       calendarId: string,
@@ -94,7 +93,6 @@ export type Action =
     |}
   | BookRoom
   | RoomBooked
-  | {| type: 'CHANGE_FILTER', group: string |}
   | {| type: 'TOGGLE_SIDEBAR' |};
 
 export type Store = ReduxStore<State, Action>;
