@@ -10,7 +10,7 @@
     "bootstrap": "^4.0.0-beta.2",
     "font-awesome": "^4.7.0",
     "lodash": "^4.13.1",
-    "moment": "^2.19.1",
+    "moment": "^2.19.2",
     "prettier": "^1.8.2",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
