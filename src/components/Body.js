@@ -30,7 +30,7 @@ function Body({
 }: Props) {
   const selectedGroup =
     location && location.pathname && location.pathname.length > 1
-      ? location.pathname.slice(1)
+      ? decodeURIComponent(location.pathname.slice(1))
       : 'all';
   return (
     <div className="row">
@@ -42,7 +42,9 @@ function Body({
         <select
           className="form-control"
           value={selectedGroup}
-          onChange={event => history.push(event.target.value)}
+          onChange={event =>
+            history.push(encodeURIComponent(event.target.value))
+          }
         >
           <option value="all">Show all</option>
           {_.map(_.uniq(_.map(calendarEvents, 'group')), group => (
