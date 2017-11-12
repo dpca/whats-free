@@ -68,17 +68,13 @@ export function App({
           <span className="navbar-toggler-icon" />
         </button>
         <ul className="navbar-nav ml-auto">
-          {
-            auth.success &&
-              <li>
-                <button
-                  className="btn my-2 my-sm-0"
-                  onClick={() => onLogout()}
-                >
-                  Sign out
-                </button>
-              </li>
-          }
+          {auth.success && (
+            <li>
+              <button className="btn my-2 my-sm-0" onClick={() => onLogout()}>
+                Sign out
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
       {auth.success ? (
