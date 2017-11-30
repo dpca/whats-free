@@ -33,7 +33,7 @@
   "license": "MIT",
   "lint-staged": {
     "*.{js,css,md}": [
-      "prettier --parser flow --single-quote --trailing-comma es5 --write --no-color",
+      "prettier --single-quote --trailing-comma es5 --write --no-color",
       "git add"
     ]
   },
@@ -49,7 +49,7 @@
     "flow:check": "flow check",
     "flow:install-types": "flow-typed install",
     "precommit": "lint-staged",
-    "pretty": "prettier --parser flow --single-quote --trailing-comma es5 --write --no-color \"src/**/*.js\"",
+    "pretty": "prettier --single-quote --trailing-comma es5 --write --no-color \"src/**/*.js\"",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   }
