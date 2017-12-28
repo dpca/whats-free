@@ -7,11 +7,11 @@
     "url": "https://github.com/dpca/whats-free/issues"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "^4.0.0-beta.3",
     "font-awesome": "^4.7.0",
     "lodash": "^4.13.1",
-    "moment": "^2.19.3",
-    "prettier": "^1.8.2",
+    "moment": "^2.20.1",
+    "prettier": "^1.9.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "coveralls": "^3.0.0",
     "dotenv": "^4.0.0",
-    "flow-bin": "^0.60.0",
+    "flow-bin": "^0.62.0",
     "flow-typed": "^2.2.3",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
