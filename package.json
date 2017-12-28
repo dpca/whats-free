@@ -32,8 +32,12 @@
   "homepage": "https://github.com/dpca/whats-free#readme",
   "license": "MIT",
   "lint-staged": {
-    "*.{js,css,md}": [
-      "prettier --single-quote --trailing-comma es5 --write --no-color",
+    "src/**/*.js": [
+      "pretty --parser flow",
+      "git add"
+    ],
+    "*.{css,md}": [
+      "prettier --write",
       "git add"
     ]
   },
@@ -49,7 +53,7 @@
     "flow:check": "flow check",
     "flow:install-types": "flow-typed install",
     "precommit": "lint-staged",
-    "pretty": "prettier --single-quote --trailing-comma es5 --write --no-color \"src/**/*.js\"",
+    "pretty": "prettier --write --single-quote --trailing-comma es5 --arrow-parens always --no-color",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   }
