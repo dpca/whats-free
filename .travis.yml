@@ -7,5 +7,5 @@ cache:
     - node_modules
 script:
   - echo "[]" > src/calendars.json
-  - yarn flow:check
-  - yarn test -- --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - yarn run flow:check
+  - yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
