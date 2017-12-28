@@ -3,8 +3,8 @@
 
 // @flow
 
-declare module 'redux-saga' {
-  import typeof * as _effects from 'redux-saga/effects';
+declare module "redux-saga" {
+  import typeof * as _effects from "redux-saga/effects";
   declare export var effects: _effects;
 
   declare export interface Channel {
@@ -34,7 +34,7 @@ declare module 'redux-saga' {
       +effectId: number,
       +parentEffectId: number,
       +label: string,
-      +effect: Effect,
+      +effect: Effect
     }) => void;
     effectResolved: (effectId: number, result: mixed) => void;
     effectRejected: (effectId: number, error: Error) => void;
@@ -55,11 +55,11 @@ declare module 'redux-saga' {
     +fixed: (limit?: number) => Buffer,
     +dropping: (limit?: number) => Buffer,
     +sliding: (limit?: number) => Buffer,
-    +expanding: (initialSize?: number) => Buffer,
+    +expanding: (initialSize?: number) => Buffer
   };
 
   declare export var channel: (buffer?: Buffer) => Channel;
-  declare export var END: { +type: '@@redux-saga/CHANNEL_END' };
+  declare export var END: { +type: "@@redux-saga/CHANNEL_END" };
   declare export var CANCEL: Symbol;
   declare export var delay: (timeout: number) => Promise<void>;
 
@@ -69,10 +69,10 @@ declare module 'redux-saga' {
     +getState?: () => any,
     +sagaMonitor?: SagaMonitor,
     +logger?: (
-      level: 'info' | 'warning' | 'error',
+      level: "info" | "warning" | "error",
       ...args: Array<any>
     ) => void,
-    +onError?: (error: Error) => void,
+    +onError?: (error: Error) => void
   };
 
   declare export var runSaga: {
@@ -138,7 +138,7 @@ declare module 'redux-saga' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): Task<R>,
+    ): Task<R>
   };
 
   declare interface SagaMiddleware {
@@ -198,17 +198,17 @@ declare module 'redux-saga' {
         t4: T4,
         t5: T5,
         t6: T6
-      ): Task<R>,
+      ): Task<R>
     };
   }
 
   declare type createSagaMiddleware = (options?: {
     +sagaMonitor?: SagaMonitor,
     +logger?: (
-      level: 'info' | 'warning' | 'error',
+      level: "info" | "warning" | "error",
       ...args: Array<any>
     ) => void,
-    +onError?: (error: Error) => void,
+    +onError?: (error: Error) => void
   }) => SagaMiddleware;
 
   declare export default createSagaMiddleware
@@ -222,47 +222,47 @@ declare module 'redux-saga' {
     C: Channel | void,
     M: true | void
   > = {
-    +'@@redux-saga/IO': true,
+    +"@@redux-saga/IO": true,
     +TAKE: {
       +pattern: P,
       +channel: C,
-      +maybe: M,
-    },
+      +maybe: M
+    }
   };
 
   declare export type PutEffect<A: Object, C: Channel | null> = {
-    +'@@redux-saga/IO': true,
+    +"@@redux-saga/IO": true,
     +PUT: {
       +action: A,
-      +channel: C,
-    },
+      +channel: C
+    }
   };
 
   declare export type CallEffect<Ctx, Fn: Function, Args: $ReadOnlyArray<*>> = {
-    +'@@redux-saga/IO': true,
+    +"@@redux-saga/IO": true,
     +CALL: {
       +context: Ctx,
       +fn: Fn,
-      +args: Args,
-    },
+      +args: Args
+    }
   };
 
   declare export type ForkEffect<Ctx, Fn: Function, Args: $ReadOnlyArray<*>> = {
-    +'@@redux-saga/IO': true,
+    +"@@redux-saga/IO": true,
     +FORK: {
       +context: Ctx,
       +fn: Fn,
-      +args: Args,
-    },
+      +args: Args
+    }
   };
 
   declare export type CpsEffect<Ctx, Fn: Function, Args: $ReadOnlyArray<*>> = {
-    +'@@redux-saga/IO': true,
+    +"@@redux-saga/IO": true,
     +CPS: {
       +context: Ctx,
       +fn: Fn,
-      +args: Args,
-    },
+      +args: Args
+    }
   };
 
   declare export type SpawnEffect<
@@ -270,72 +270,72 @@ declare module 'redux-saga' {
     Fn: Function,
     Args: $ReadOnlyArray<*>
   > = {
-    +'@@redux-saga/IO': true,
+    +"@@redux-saga/IO": true,
     +SPAWN: {
       +context: Ctx,
       +fn: Fn,
-      +args: Args,
-    },
+      +args: Args
+    }
   };
 
   declare export type JoinEffect<T: Task<*>> = {
-    +'@@redux-saga/IO': true,
-    +JOIN: T,
+    +"@@redux-saga/IO": true,
+    +JOIN: T
   };
 
   declare export type CancelEffect<
-    T: Task<*> | '@@redux-saga/SELF_CANCELLATION'
+    T: Task<*> | "@@redux-saga/SELF_CANCELLATION"
   > = {
-    +'@@redux-saga/IO': true,
-    +CANCEL: T,
+    +"@@redux-saga/IO": true,
+    +CANCEL: T
   };
 
   declare export type SelectEffect<Fn: Function, Args: $ReadOnlyArray<*>> = {
-    +'@@redux-saga/IO': true,
+    +"@@redux-saga/IO": true,
     +SELECT: {
       +selector: Fn,
-      +args: Args,
-    },
+      +args: Args
+    }
   };
 
   declare export type ActionChannelEffect<P: Pattern, B: Buffer | void> = {
-    +'@@redux-saga/IO': true,
+    +"@@redux-saga/IO": true,
     +ACTION_CHANNEL: {
       +buffer: B,
-      +pattern: P,
-    },
+      +pattern: P
+    }
   };
 
   declare export type FlushEffect = {
-    +'@@redux-saga/IO': true,
-    +FLUSH: Channel,
+    +"@@redux-saga/IO": true,
+    +FLUSH: Channel
   };
 
   declare export type CancelledEffect = {
-    +'@@redux-saga/IO': true,
-    +CANCELLED: {},
+    +"@@redux-saga/IO": true,
+    +CANCELLED: {}
   };
 
   declare export type SetContextEffect<T: {}> = {
-    +'@@redux-saga/IO': true,
-    +SET_CONTEXT: T,
+    +"@@redux-saga/IO": true,
+    +SET_CONTEXT: T
   };
 
   declare export type GetContextEffect = {
-    +'@@redux-saga/IO': true,
-    +GET_CONTEXT: string,
+    +"@@redux-saga/IO": true,
+    +GET_CONTEXT: string
   };
 
   declare export type RaceEffect<
     R: { +[name: string]: Effect } | $ReadOnlyArray<Effect>
   > = {
-    +'@@redux-saga/IO': true,
-    +RACE: R,
+    +"@@redux-saga/IO": true,
+    +RACE: R
   };
 
   declare export type AllEffect = {
-    +'@@redux-saga/IO': true,
-    +ALL: { +[name: string]: Effect } | $ReadOnlyArray<Effect>,
+    +"@@redux-saga/IO": true,
+    +ALL: { +[name: string]: Effect } | $ReadOnlyArray<Effect>
   };
 
   declare export type Effect =
@@ -357,7 +357,7 @@ declare module 'redux-saga' {
     | AllEffect;
 }
 
-declare module 'redux-saga/effects' {
+declare module "redux-saga/effects" {
   import type {
     ActionChannelEffect,
     AllEffect,
@@ -380,21 +380,21 @@ declare module 'redux-saga/effects' {
     SetContextEffect,
     SpawnEffect,
     TakeEffect,
-    Task,
-  } from 'redux-saga';
+    Task
+  } from "redux-saga";
 
   declare export var take: {
     <P: Pattern>(pattern: P): TakeEffect<P, void, void>,
     (channel: Channel): TakeEffect<void, Channel, void>,
     +maybe: {
       <P: Pattern>(pattern: P): TakeEffect<P, void, true>,
-      (channel: Channel): TakeEffect<void, Channel, true>,
-    },
+      (channel: Channel): TakeEffect<void, Channel, true>
+    }
   };
 
   declare export var put: {
     <A: Object>(action: A): PutEffect<A, null>,
-    <A: Object>(channel: Channel, action: A): PutEffect<A, Channel>,
+    <A: Object>(channel: Channel, action: A): PutEffect<A, Channel>
   };
 
   declare export var call: {
@@ -505,7 +505,7 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): CallEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>,
+    ): CallEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>
   };
 
   declare export var apply: {
@@ -573,12 +573,12 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): CallEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>,
+    ): CallEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>
   };
 
   declare type NodeCallback<R> = {
     (err: Error): void,
-    (err: null | void | false, result: R): void,
+    (err: null | void | false, result: R): void
   };
 
   declare export var cps: {
@@ -740,7 +740,7 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): CpsEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>,
+    ): CpsEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>
   };
 
   declare export var fork: {
@@ -851,7 +851,7 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): ForkEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>,
+    ): ForkEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>
   };
 
   declare export var spawn: {
@@ -962,18 +962,18 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): SpawnEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>,
+    ): SpawnEffect<Ctx, Fn, [T1, T2, T3, T4, T5, T6]>
   };
 
   declare export var join: {
     <T: Task<*>>(task: T): JoinEffect<T>,
-    (task: Task<*>, ...tasks: $ReadOnlyArray<Task<any>>): AllEffect,
+    (task: Task<*>, ...tasks: $ReadOnlyArray<Task<any>>): AllEffect
   };
 
   declare export var cancel: {
-    (): CancelEffect<'@@redux-saga/SELF_CANCELLATION'>,
+    (): CancelEffect<"@@redux-saga/SELF_CANCELLATION">,
     <T: Task<*>>(task: T): CancelEffect<T>,
-    (task: Task<*>, ...tasks: $ReadOnlyArray<Task<any>>): AllEffect,
+    (task: Task<*>, ...tasks: $ReadOnlyArray<Task<any>>): AllEffect
   };
 
   declare export var select: {
@@ -1035,39 +1035,39 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): SelectEffect<Fn, [T1, T2, T3, T4, T5, T6]>,
+    ): SelectEffect<Fn, [T1, T2, T3, T4, T5, T6]>
   };
 
   declare export var actionChannel: {
     <P: Pattern>(pattern: P): ActionChannelEffect<P, void>,
-    <P: Pattern, B: Buffer>(pattern: P, buffer: B): ActionChannelEffect<P, B>,
+    <P: Pattern, B: Buffer>(pattern: P, buffer: B): ActionChannelEffect<P, B>
   };
 
   declare export var flush: {
-    (channel: Channel): FlushEffect,
+    (channel: Channel): FlushEffect
   };
 
   declare export var cancelled: {
-    (): CancelledEffect,
+    (): CancelledEffect
   };
 
   declare export var setContext: {
-    <T>(ctx: T): SetContextEffect<T>,
+    <T>(ctx: T): SetContextEffect<T>
   };
 
   declare export var getContext: {
-    (prop: string): GetContextEffect,
+    (prop: string): GetContextEffect
   };
 
   declare export var race: {
     <R: { +[name: string]: Effect } | $ReadOnlyArray<Effect>>(
       effects: R
-    ): RaceEffect<R>,
+    ): RaceEffect<R>
   };
 
   declare export var all: {
     (effects: { +[name: string]: Effect }): AllEffect,
-    (effects: $ReadOnlyArray<Effect>): AllEffect,
+    (effects: $ReadOnlyArray<Effect>): AllEffect
   };
 
   declare export var takeEvery: {
@@ -1225,7 +1225,7 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): ForkEffect<null, Function, $ReadOnlyArray<any>>,
+    ): ForkEffect<null, Function, $ReadOnlyArray<any>>
   };
 
   declare export var takeLatest: {
@@ -1383,7 +1383,7 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): ForkEffect<null, Function, $ReadOnlyArray<any>>,
+    ): ForkEffect<null, Function, $ReadOnlyArray<any>>
   };
 
   declare export var throttle: {
@@ -1470,6 +1470,6 @@ declare module 'redux-saga/effects' {
       t4: T4,
       t5: T5,
       t6: T6
-    ): ForkEffect<null, Function, [T1, T2, T3, T4, T5, T6]>,
+    ): ForkEffect<null, Function, [T1, T2, T3, T4, T5, T6]>
   };
 }

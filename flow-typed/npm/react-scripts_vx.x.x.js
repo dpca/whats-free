@@ -131,9 +131,7 @@ declare module 'react-scripts/config/webpack.config.prod.js' {
   declare module.exports: $Exports<'react-scripts/config/webpack.config.prod'>;
 }
 declare module 'react-scripts/config/webpackDevServer.config.js' {
-  declare module.exports: $Exports<
-    'react-scripts/config/webpackDevServer.config'
-  >;
+  declare module.exports: $Exports<'react-scripts/config/webpackDevServer.config'>;
 }
 declare module 'react-scripts/scripts/build.js' {
   declare module.exports: $Exports<'react-scripts/scripts/build'>;
@@ -151,9 +149,7 @@ declare module 'react-scripts/scripts/test.js' {
   declare module.exports: $Exports<'react-scripts/scripts/test'>;
 }
 declare module 'react-scripts/scripts/utils/createJestConfig.js' {
-  declare module.exports: $Exports<
-    'react-scripts/scripts/utils/createJestConfig'
-  >;
+  declare module.exports: $Exports<'react-scripts/scripts/utils/createJestConfig'>;
 }
 declare module 'react-scripts/template/src/App.js' {
   declare module.exports: $Exports<'react-scripts/template/src/App'>;
@@ -165,7 +161,5 @@ declare module 'react-scripts/template/src/index.js' {
   declare module.exports: $Exports<'react-scripts/template/src/index'>;
 }
 declare module 'react-scripts/template/src/registerServiceWorker.js' {
-  declare module.exports: $Exports<
-    'react-scripts/template/src/registerServiceWorker'
-  >;
+  declare module.exports: $Exports<'react-scripts/template/src/registerServiceWorker'>;
 }
