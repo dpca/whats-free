@@ -7,14 +7,13 @@
     "url": "https://github.com/dpca/whats-free/issues"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta.3",
+    "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.13.1",
+    "lodash": "^4.17.5",
     "moment": "^2.20.1",
-    "prettier": "^1.9.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
+    "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
@@ -22,12 +21,13 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "dotenv": "^4.0.0",
-    "flow-bin": "^0.62.0",
-    "flow-typed": "^2.2.3",
+    "dotenv": "^5.0.0",
+    "flow-bin": "^0.66.0",
+    "flow-typed": "^2.3.0",
     "husky": "^0.14.3",
-    "lint-staged": "^6.0.0",
-    "react-scripts": "^1.0.17"
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.10.2",
+    "react-scripts": "^1.1.1"
   },
   "homepage": "https://github.com/dpca/whats-free#readme",
   "license": "MIT",
