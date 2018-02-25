@@ -28,7 +28,7 @@ class Time extends Component<Props, State> {
     }
   }
 
-  interval: ?number;
+  interval: ?IntervalID;
 
   tick = () => {
     this.setState({ timeDisplay: moment(this.props.time).fromNow() });
