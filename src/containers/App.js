@@ -3,7 +3,6 @@
 import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
-import type { Connector } from 'react-redux';
 import { withRouter } from 'react-router';
 import type { RouterHistory, Location } from 'react-router';
 import { authRequest, authLogout } from '../ducks/authenticate';
@@ -40,10 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   onToggleSidebar: () => dispatch(toggleSidebar()),
 });
 
-const enhance: Connector<{}, Props> = connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
+const enhance = connect(mapStateToProps, mapDispatchToProps);
 
 export function App({
   calendarEvents,
