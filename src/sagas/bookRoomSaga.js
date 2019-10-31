@@ -34,5 +34,5 @@ function* bookRoom(action) {
 }
 
 export default function* bookRoomSaga() {
-  yield* takeEvery(BOOK_ROOM, bookRoom);
+  yield takeEvery(BOOK_ROOM, bookRoom);
 }

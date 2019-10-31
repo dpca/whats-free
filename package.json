@@ -9,10 +9,10 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.15",
     "moment": "^2.21.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -27,7 +27,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1",
-    "react-scripts": "^1.1.1"
+    "react-scripts": "^3.2.0"
   },
   "homepage": "https://github.com/dpca/whats-free#readme",
   "license": "MIT",
@@ -55,5 +55,17 @@
     "precommit": "lint-staged",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
