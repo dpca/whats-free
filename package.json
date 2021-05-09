@@ -9,7 +9,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.21.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
